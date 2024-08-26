@@ -1,0 +1,90 @@
+@use "./variables" as *;
+@use "./typography";
+
+@mixin divider {
+  border: 0.0625rem solid $Mercury;
+}
+
+@mixin PageHeader-Desktop {
+  font-size: 3.75rem;
+  line-height: 4.25rem;
+  font-weight: bold;
+}
+
+@mixin PageHeader-Mobile {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+@mixin SectionHeader-Desktop {
+  font-size: 2.25rem;
+  line-height: 2.75rem;
+  font-weight: bold;
+}
+
+@mixin SectionHeader-Mobile {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+@mixin Subheader-Desktop {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+@mixin Subheader-Mobile {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
+
+@mixin BodyCopy-Desktop {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: normal;
+}
+
+@mixin BodyCopy-Mobile {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: normal;
+}
+
+@mixin FooterCopy-Desktop {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: normal;
+}
+
+@mixin FooterCopy-Mobile {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: normal;
+}
+
+@mixin LabelsButtons-Desktop {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+
+@mixin LabelsButtons-Mobile {
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+
+@mixin breakpoint-tablet {
+  @media (min-width: $tablet-screen) {
+    @content;
+  }
+}
+
+@mixin breakpoint-desktop {
+  @media (min-width: $desktop-screen) {
+    @content;
+  }
+}

@@ -1,0 +1,12 @@
+@use "./partials/global";
+@use "./partials/typography";
+@use "./partials/mixins" as *;
+@use "./partials/variables" as *;
+
+.test {
+  @include PageHeader-Mobile;
+
+  @include breakpoint-desktop {
+    @include PageHeader-Desktop;
+  }
+}
