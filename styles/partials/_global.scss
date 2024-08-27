@@ -30,12 +30,22 @@ body {
   align-items: center;
   background-color: $BandSite-Black;
 
+  @include breakpoint-tablet {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
   &__left {
     padding-top: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
     display: flex;
     align-items: flex-end;
     height: 50%;
+    @include breakpoint-tablet {
+      height: auto;
+      padding: $Mobile-Padding-Large;
+    }
   }
 
   &__logo {
@@ -47,6 +57,11 @@ body {
     display: flex;
     height: 50%;
     width: 100%;
+    @include breakpoint-tablet {
+      height: auto;
+      width: auto;
+      padding-left: $Mobile-Padding-Large;
+    }
   }
 
   &__list {
@@ -58,6 +73,10 @@ body {
     width: 50vw;
     text-align: center;
     padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      width: 10vw;
+      padding-bottom: $Mobile-Padding-Large;
+    }
   }
 
   &__link {
@@ -77,4 +96,120 @@ body {
   justify-content: center;
   align-items: flex-start;
   background-color: $BandSite-Black;
+  padding-left: $Mobile-Padding-Standard;
+
+  @include breakpoint-tablet {
+    padding-left: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+  &__top {
+    &-right {
+      display: none;
+    }
+    @include breakpoint-tablet {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      &-left {
+        display: flex;
+        align-items: center;
+      }
+      &-right {
+        display: contents;
+      }
+    }
+  }
+
+  &__middle {
+    @include breakpoint-tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  &__bottom-above {
+    @include breakpoint-tablet {
+      display: none;
+    }
+  }
+
+  &__title {
+    @include SectionHeader-Mobile;
+    color: $White;
+    padding-right: $Mobile-Padding-Standard;
+    padding-top: $Mobile-Padding-Large;
+    padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      @include SectionHeader-Desktop;
+      padding-right: $Desktop-Padding-Standard;
+      padding-top: $Desktop-Padding-Large;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
+  }
+  &__social-icon {
+    padding-right: $Mobile-Padding-Standard;
+    padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      padding-right: $Mobile-Padding-Large;
+      padding-top: $Desktop-Padding-Large;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
+  }
+  &__contact {
+    color: $White;
+    padding-bottom: $Mobile-Padding-Large;
+
+    @include breakpoint-tablet {
+      color: $White;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
+  }
+  &__contact-name {
+    @include FooterCopy-Mobile;
+    font-weight: 600;
+    padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      @include FooterCopy-Desktop;
+    }
+  }
+  &__contact-address {
+    @include FooterCopy-Mobile;
+    padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      @include FooterCopy-Desktop;
+    }
+  }
+
+  &__contact-email {
+    &--link {
+      @include FooterCopy-Mobile;
+      color: $White;
+      text-decoration: none;
+      @include breakpoint-tablet {
+        @include FooterCopy-Desktop;
+      }
+    }
+  }
+
+  &__logo {
+    max-width: 7.5rem;
+    max-height: 1.25rem;
+  }
+  &__copyright {
+    @include FooterCopy-Mobile;
+    padding-top: $Mobile-Padding-Standard;
+    padding-bottom: $Mobile-Padding-Standard;
+    color: $White;
+
+    @include breakpoint-tablet {
+      @include FooterCopy-Desktop;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
+  }
 }

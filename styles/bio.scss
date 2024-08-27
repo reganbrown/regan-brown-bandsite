@@ -9,6 +9,9 @@
     height: 60vw;
     background-position: center;
     background-size: cover;
+    @include breakpoint-tablet {
+      height: 50vw;
+    }
     @include breakpoint-desktop {
       height: 40vw;
     }
@@ -18,11 +21,18 @@
       display: flex;
       align-items: center;
       padding-left: $Mobile-Padding-Standard;
+      @include breakpoint-tablet {
+        padding-left: $Desktop-Padding-Standard;
+        padding-right: $Desktop-Padding-Standard;
+      }
     }
   }
   &__title {
     @include PageHeader-Mobile;
     color: $White;
+    @include breakpoint-tablet {
+      @include PageHeader-Desktop;
+    }
   }
 }
 
@@ -30,10 +40,21 @@
   padding-left: $Mobile-Padding-Standard;
   padding-right: $Mobile-Padding-Standard;
 
+  @include breakpoint-tablet {
+    padding-left: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+
   &__title {
     @include SectionHeader-Mobile;
     padding-top: $Mobile-Padding-Large;
     padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      @include SectionHeader-Desktop;
+      padding-top: $Desktop-Padding-Large;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
   }
   &__image-container {
     height: 50vw;
@@ -48,22 +69,59 @@
     bottom: 0;
   }
   &__quote {
-    @include Subheader-Mobile;
     padding-top: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      padding: $Desktop-Padding-Standard;
+    }
+
+    &-copy {
+      @include Subheader-Mobile;
+
+      @include breakpoint-tablet {
+        @include Subheader-Desktop;
+      }
+    }
+
     &-footer {
+      @include Subheader-Mobile;
       padding-top: $Mobile-Padding-Half;
+
+      @include breakpoint-tablet {
+        @include Subheader-Desktop;
+      }
     }
   }
 
   &__subtitle {
     @include Subheader-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      @include Subheader-Desktop;
+      padding-bottom: $Desktop-Padding-Standard;
+      padding-left: $Desktop-Padding-Standard;
+    }
+  }
+
+  &__container {
+    @include breakpoint-tablet {
+      display: flex;
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+    }
   }
 
   &__copy {
     @include BodyCopy-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      @include BodyCopy-Desktop;
+      padding-bottom: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+    }
   }
 }
 
@@ -72,13 +130,20 @@
   padding-right: $Mobile-Padding-Standard;
   background-color: $Alabaster;
 
+  @include breakpoint-tablet {
+    padding-left: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+
   &__title {
     @include SectionHeader-Mobile;
     font-weight: 600;
     padding-top: $Mobile-Padding-Large;
     padding-bottom: $Mobile-Padding-Standard;
-    @include breakpoint-desktop {
+    @include breakpoint-tablet {
       @include SectionHeader-Desktop;
+      padding-top: $Desktop-Padding-Large;
+      padding-bottom: $Desktop-Padding-Standard;
     }
   }
 
@@ -93,11 +158,11 @@
     width: 100%;
     height: auto;
     padding-bottom: $Mobile-Padding-Standard;
-    @include breakpoint-desktop {
+    @include breakpoint-tablet {
       width: 32%;
-      padding-left: $Desktop-Padding-Half;
-      padding-right: $Desktop-Padding-Half;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding-left: $Mobile-Padding-Half;
+      padding-right: $Mobile-Padding-Half;
+      padding-bottom: $Mobile-Padding-Standard;
     }
   }
 }
