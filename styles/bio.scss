@@ -3,20 +3,15 @@
 @use "./partials/mixins" as *;
 @use "./partials/variables" as *;
 
-.test {
-  @include PageHeader-Mobile;
-
-  @include breakpoint-desktop {
-    @include PageHeader-Desktop;
-  }
-}
-
 .hero {
   &__image {
     background-image: url("../assets/images/hero-bio.jpg");
     height: 60vw;
     background-position: center;
     background-size: cover;
+    @include breakpoint-desktop {
+      height: 40vw;
+    }
     &--filter {
       background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
       height: 100%;
@@ -27,7 +22,6 @@
   }
   &__title {
     @include PageHeader-Mobile;
-    font-weight: 600;
     color: $White;
   }
 }
@@ -35,9 +29,9 @@
 .about {
   padding-left: $Mobile-Padding-Standard;
   padding-right: $Mobile-Padding-Standard;
+
   &__title {
     @include SectionHeader-Mobile;
-    font-weight: 600;
     padding-top: $Mobile-Padding-Large;
     padding-bottom: $Mobile-Padding-Standard;
   }
@@ -46,6 +40,7 @@
     overflow: hidden;
     position: relative;
   }
+
   &__image {
     width: 100%;
     height: auto;
@@ -76,22 +71,33 @@
   padding-left: $Mobile-Padding-Standard;
   padding-right: $Mobile-Padding-Standard;
   background-color: $Alabaster;
+
   &__title {
     @include SectionHeader-Mobile;
     font-weight: 600;
     padding-top: $Mobile-Padding-Large;
     padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-desktop {
+      @include SectionHeader-Desktop;
+    }
   }
-  &__image-container {
-    margin-top: $Mobile-Padding-Standard;
-    height: 50vw;
-    overflow: hidden;
-    position: relative;
+
+  &__images {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
   &__image {
     width: 100%;
     height: auto;
-    position: absolute;
-    bottom: 0;
+    padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-desktop {
+      width: 32%;
+      padding-left: $Desktop-Padding-Half;
+      padding-right: $Desktop-Padding-Half;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
   }
 }

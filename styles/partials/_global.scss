@@ -19,6 +19,8 @@ html {
 
 body {
   font-family: "AvenirNextLTPro";
+  width: 100vw;
+  word-spacing: 0.034em;
 }
 
 .nav-bar {
@@ -27,12 +29,6 @@ body {
   justify-content: center;
   align-items: center;
   background-color: $BandSite-Black;
-  // this height was for experimenting, dont keep it.
-
-  @include breakpoint-desktop {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
 
   &__left {
     padding-top: $Mobile-Padding-Standard;
@@ -62,10 +58,6 @@ body {
     width: 50vw;
     text-align: center;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-desktop {
-      width: 20%;
-    }
   }
 
   &__link {
@@ -77,4 +69,12 @@ body {
       font-weight: bold;
     }
   }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $BandSite-Black;
 }
