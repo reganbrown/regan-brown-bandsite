@@ -19,11 +19,12 @@ html {
 
 body {
   font-family: "AvenirNextLTPro";
-  width: 100vw;
   word-spacing: 0.034em;
+  width: 100vw;
 }
 
 .nav-bar {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,6 +92,7 @@ body {
 }
 
 .footer {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
