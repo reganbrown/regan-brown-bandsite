@@ -56,8 +56,9 @@ body {
 
   &__right {
     display: flex;
+    justify-content: center;
     height: 50%;
-    width: 100%;
+    width: 95%;
     @include breakpoint-tablet {
       height: auto;
       width: auto;
@@ -71,7 +72,7 @@ body {
   }
 
   &__item {
-    width: 50vw;
+    width: 40vw;
     text-align: center;
     padding-bottom: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
@@ -83,9 +84,14 @@ body {
   &__link {
     text-decoration: none;
     color: $White;
+    border-bottom: 3px $BandSite-Black solid;
+
+    &:hover {
+      border-bottom: 3px $White solid;
+    }
 
     &:focus {
-      border-bottom: 3px white solid;
+      border-bottom: 3px $White solid;
       font-weight: bold;
     }
   }
