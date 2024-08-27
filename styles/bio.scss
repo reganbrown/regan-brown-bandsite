@@ -10,3 +10,88 @@
     @include PageHeader-Desktop;
   }
 }
+
+.hero {
+  &__image {
+    background-image: url("../assets/images/hero-bio.jpg");
+    height: 60vw;
+    background-position: center;
+    background-size: cover;
+    &--filter {
+      background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: $Mobile-Padding-Standard;
+    }
+  }
+  &__title {
+    @include PageHeader-Mobile;
+    font-weight: 600;
+    color: $White;
+  }
+}
+
+.about {
+  padding-left: $Mobile-Padding-Standard;
+  padding-right: $Mobile-Padding-Standard;
+  &__title {
+    @include SectionHeader-Mobile;
+    font-weight: 600;
+    padding-top: $Mobile-Padding-Large;
+    padding-bottom: $Mobile-Padding-Standard;
+  }
+  &__image-container {
+    height: 50vw;
+    overflow: hidden;
+    position: relative;
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+  }
+  &__quote {
+    @include Subheader-Mobile;
+    padding-top: $Mobile-Padding-Standard;
+    padding-bottom: $Mobile-Padding-Standard;
+    &-footer {
+      padding-top: $Mobile-Padding-Half;
+    }
+  }
+
+  &__subtitle {
+    @include Subheader-Mobile;
+    padding-bottom: $Mobile-Padding-Standard;
+  }
+
+  &__copy {
+    @include BodyCopy-Mobile;
+    padding-bottom: $Mobile-Padding-Standard;
+  }
+}
+
+.gallery {
+  padding-left: $Mobile-Padding-Standard;
+  padding-right: $Mobile-Padding-Standard;
+  background-color: $Alabaster;
+  &__title {
+    @include SectionHeader-Mobile;
+    font-weight: 600;
+    padding-top: $Mobile-Padding-Large;
+    padding-bottom: $Mobile-Padding-Standard;
+  }
+  &__image-container {
+    margin-top: $Mobile-Padding-Standard;
+    height: 50vw;
+    overflow: hidden;
+    position: relative;
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+  }
+}
