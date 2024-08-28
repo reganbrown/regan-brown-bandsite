@@ -18,20 +18,28 @@
     &--filter {
       background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
       height: 100%;
-      display: flex;
-      align-items: center;
-      padding-left: $Mobile-Padding-Standard;
-      @include breakpoint-tablet {
-        padding-left: $Desktop-Padding-Standard;
-        padding-right: $Desktop-Padding-Standard;
+    }
+  }
 
-        @include breakpoint-desktop {
-          padding-left: $Desktop-Padding-Large;
-          padding-right: $Desktop-Padding-Large;
-        }
+  &__title-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+
+      @include breakpoint-desktop {
+        max-width: $max-width;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }
+
   &__title {
     @include PageHeader-Mobile;
     color: $White;
@@ -51,8 +59,11 @@
   }
 
   @include breakpoint-desktop {
-    padding-left: $Desktop-Padding-Large;
-    padding-right: $Desktop-Padding-Large;
+    max-width: $max-width;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__title {
@@ -66,17 +77,9 @@
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
-  &__image-container {
-    height: 50vw;
-    overflow: hidden;
-    position: relative;
-  }
-
   &__image {
     width: 100%;
     height: auto;
-    position: absolute;
-    bottom: 0;
   }
   &__quote {
     padding-top: $Mobile-Padding-Standard;
@@ -84,6 +87,11 @@
 
     @include breakpoint-tablet {
       padding: $Desktop-Padding-Standard;
+    }
+
+    @include breakpoint-desktop {
+      padding-left: $Desktop-Padding-XL;
+      padding-right: $Desktop-Padding-XL;
     }
 
     &-copy {
@@ -138,7 +146,6 @@
 .gallery {
   padding-left: $Mobile-Padding-Standard;
   padding-right: $Mobile-Padding-Standard;
-  background-color: $Alabaster;
 
   @include breakpoint-tablet {
     padding-left: $Desktop-Padding-Standard;
@@ -146,8 +153,15 @@
   }
 
   @include breakpoint-desktop {
-    padding-left: $Desktop-Padding-Large;
-    padding-right: $Desktop-Padding-Large;
+    max-width: $max-width;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__background {
+    background-color: $Alabaster;
   }
 
   &__title {

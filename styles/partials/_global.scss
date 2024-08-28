@@ -117,11 +117,6 @@ body {
   @include breakpoint-tablet {
     padding-left: $Desktop-Padding-Standard;
     padding-right: $Desktop-Padding-Standard;
-
-    @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-Large;
-      padding-right: $Desktop-Padding-Large;
-    }
   }
   &__top {
     &-right {

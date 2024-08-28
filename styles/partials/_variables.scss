@@ -5,15 +5,21 @@ $BandSite-DarkBlack: #000000;
 $Mercury: #e1e1e1;
 $Alabaster: #fafafa;
 
+// 16px = 1rem , 36px = 2.25rem
+// Desktop Margin
 $Desktop-Padding-XL: 4rem;
 $Desktop-Padding-Large: 3rem;
+
+// Tablet margin
 $Desktop-Padding-Standard: 2.25rem;
 $Desktop-Padding-Half: 1.12rem;
-$Desktop-Margin: 3.9375rem;
 
-$Mobile-Padding-Large: 1.5rem;
+// Mobile margin
 $Mobile-Padding-Standard: 1rem;
+$Mobile-Padding-Large: 1.5rem;
 $Mobile-Padding-Half: 0.5rem;
+
+$max-width: 63.75rem;
 
 $tablet-screen: 768px;
 $desktop-screen: 1280px;
