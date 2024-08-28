@@ -158,11 +158,15 @@
     width: 100%;
     height: auto;
     padding-bottom: $Mobile-Padding-Standard;
+    filter: grayscale(0.9);
     @include breakpoint-tablet {
       width: 32%;
       padding-left: $Mobile-Padding-Half;
       padding-right: $Mobile-Padding-Half;
       padding-bottom: $Mobile-Padding-Standard;
+    }
+    &:hover {
+      filter: none;
     }
   }
 }
