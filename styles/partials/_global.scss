@@ -46,6 +46,10 @@ body {
     @include breakpoint-tablet {
       height: auto;
       padding: $Mobile-Padding-Large;
+
+      @include breakpoint-desktop {
+        padding: $Desktop-Padding-Large;
+      }
     }
   }
 
@@ -78,6 +82,10 @@ body {
     @include breakpoint-tablet {
       width: 10vw;
       padding-bottom: $Mobile-Padding-Large;
+
+      @include breakpoint-desktop {
+        padding-bottom: $Desktop-Padding-Large;
+      }
     }
   }
 
@@ -109,6 +117,11 @@ body {
   @include breakpoint-tablet {
     padding-left: $Desktop-Padding-Standard;
     padding-right: $Desktop-Padding-Standard;
+
+    @include breakpoint-desktop {
+      padding-left: $Desktop-Padding-Large;
+      padding-right: $Desktop-Padding-Large;
+    }
   }
   &__top {
     &-right {
@@ -136,6 +149,10 @@ body {
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+
+      @include breakpoint-desktop {
+        width: 70%;
+      }
     }
   }
 
