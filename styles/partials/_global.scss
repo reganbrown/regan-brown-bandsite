@@ -23,6 +23,10 @@ body {
   width: 100vw;
 }
 
+.header {
+  background-color: $BandSite-Black;
+}
+
 .nav-bar {
   width: 100vw;
   display: flex;
@@ -35,6 +39,12 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-end;
+
+    @include breakpoint-desktop {
+      max-width: $max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &__left {
@@ -48,7 +58,7 @@ body {
       padding: $Mobile-Padding-Large;
 
       @include breakpoint-desktop {
-        padding: $Desktop-Padding-Large;
+        padding: $Desktop-Padding-Large 0;
       }
     }
   }
@@ -106,17 +116,27 @@ body {
 }
 
 .footer {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   background-color: $BandSite-Black;
-  padding-left: $Mobile-Padding-Standard;
+  &__container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: $BandSite-Black;
+    padding-left: $Mobile-Padding-Standard;
 
-  @include breakpoint-tablet {
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include breakpoint-tablet {
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+    }
+    @include breakpoint-desktop {
+      max-width: $max-width;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
   &__top {
     &-right {
@@ -143,7 +163,7 @@ body {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: 100%;
+      width: 70%;
 
       @include breakpoint-desktop {
         width: 70%;
@@ -188,6 +208,7 @@ body {
     @include breakpoint-tablet {
       color: $White;
       padding-bottom: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
     }
   }
   &__contact-name {
