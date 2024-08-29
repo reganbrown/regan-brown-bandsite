@@ -23,42 +23,53 @@ body {
   width: 100vw;
 }
 
-.header {
-  background-color: $BandSite-Black;
-}
-
 .nav-bar {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: $BandSite-Black;
 
-  @include breakpoint-tablet {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
+  &__body {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $BandSite-Black;
 
+    @include breakpoint-tablet {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
     @include breakpoint-desktop {
       max-width: $max-width;
       margin-left: auto;
       margin-right: auto;
     }
-  }
 
-  &__left {
-    padding-top: $Mobile-Padding-Standard;
-    padding-bottom: $Mobile-Padding-Standard;
-    display: flex;
-    align-items: flex-end;
-    height: 50%;
-    @include breakpoint-tablet {
-      height: auto;
-      padding: $Mobile-Padding-Large;
+    &--left {
+      padding-top: $Mobile-Padding-Standard;
+      padding-bottom: $Mobile-Padding-Standard;
+      display: flex;
+      align-items: flex-end;
+      height: 50%;
+      @include breakpoint-tablet {
+        height: auto;
+        padding: $Mobile-Padding-Large;
 
-      @include breakpoint-desktop {
-        padding: $Desktop-Padding-Large 0;
+        @include breakpoint-desktop {
+          padding: $Desktop-Padding-Large 0;
+        }
+      }
+    }
+
+    &--right {
+      display: flex;
+      justify-content: center;
+      height: 50%;
+      width: 95%;
+      @include breakpoint-tablet {
+        height: auto;
+        width: auto;
+        padding-left: $Mobile-Padding-Large;
       }
     }
   }
@@ -66,18 +77,6 @@ body {
   &__logo {
     max-width: 7.5rem;
     max-height: 1.25rem;
-  }
-
-  &__right {
-    display: flex;
-    justify-content: center;
-    height: 50%;
-    width: 95%;
-    @include breakpoint-tablet {
-      height: auto;
-      width: auto;
-      padding-left: $Mobile-Padding-Large;
-    }
   }
 
   &__list {
@@ -92,10 +91,9 @@ body {
     @include breakpoint-tablet {
       width: 10vw;
       padding-bottom: $Mobile-Padding-Large;
-
-      @include breakpoint-desktop {
-        padding-bottom: $Desktop-Padding-Large;
-      }
+    }
+    @include breakpoint-desktop {
+      padding-bottom: $Desktop-Padding-Large;
     }
   }
 
@@ -115,66 +113,46 @@ body {
   }
 }
 
-.footer {
+.site-footer {
   background-color: $BandSite-Black;
-  &__container {
-    width: 100vw;
+}
+
+.footer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: $BandSite-Black;
+  padding-left: $Mobile-Padding-Standard;
+
+  @include breakpoint-tablet {
+    padding-left: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+  @include breakpoint-desktop {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.footer-top {
+  @include breakpoint-tablet {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: $BandSite-Black;
-    padding-left: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
-    }
-    @include breakpoint-desktop {
-      max-width: $max-width;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 0;
-      padding-right: 0;
-    }
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  &__top {
-    &-right {
-      display: none;
-    }
-    @include breakpoint-tablet {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      &-left {
-        display: flex;
-        align-items: center;
-      }
-      &-right {
-        display: contents;
-      }
-    }
-  }
+}
 
-  &__middle {
-    @include breakpoint-tablet {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 70%;
-
-      @include breakpoint-desktop {
-        width: 70%;
-      }
-    }
-  }
-
-  &__bottom-above {
-    @include breakpoint-tablet {
-      display: none;
-    }
+.social-container {
+  @include breakpoint-tablet {
+    display: flex;
+    align-items: center;
   }
 
   &__title {
@@ -191,7 +169,10 @@ body {
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
-  &__social-icon {
+}
+
+.socials {
+  &__icon {
     padding-right: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
 
@@ -201,17 +182,43 @@ body {
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
-  &__contact {
-    color: $White;
-    padding-bottom: $Mobile-Padding-Large;
+}
 
-    @include breakpoint-tablet {
-      color: $White;
-      padding-bottom: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+.logo-top {
+  display: none;
+  @include breakpoint-tablet {
+    display: contents;
+  }
+  &__logo {
+    max-width: 7.5rem;
+    max-height: 1.25rem;
+  }
+}
+
+.footer-middle {
+  @include breakpoint-tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+
+    @include breakpoint-desktop {
+      width: 70%;
     }
   }
-  &__contact-name {
+}
+
+.contact-card {
+  color: $White;
+  padding-bottom: $Mobile-Padding-Large;
+
+  @include breakpoint-tablet {
+    color: $White;
+    padding-bottom: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+
+  &__name {
     @include FooterCopy-Mobile;
     font-weight: 600;
     padding-bottom: $Mobile-Padding-Standard;
@@ -219,7 +226,7 @@ body {
       @include FooterCopy-Desktop;
     }
   }
-  &__contact-address {
+  &__address {
     @include FooterCopy-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
@@ -227,7 +234,7 @@ body {
     }
   }
 
-  &__contact-email {
+  &__email {
     &--link {
       @include FooterCopy-Mobile;
       color: $White;
@@ -237,20 +244,26 @@ body {
       }
     }
   }
+}
 
+.logo-bottom {
+  @include breakpoint-tablet {
+    display: none;
+  }
   &__logo {
     max-width: 7.5rem;
     max-height: 1.25rem;
   }
-  &__copyright {
-    @include FooterCopy-Mobile;
-    padding-top: $Mobile-Padding-Standard;
-    padding-bottom: $Mobile-Padding-Standard;
-    color: $White;
+}
 
-    @include breakpoint-tablet {
-      @include FooterCopy-Desktop;
-      padding-bottom: $Desktop-Padding-Standard;
-    }
+.footer-bottom__copyright {
+  @include FooterCopy-Mobile;
+  padding-top: $Mobile-Padding-Standard;
+  padding-bottom: $Mobile-Padding-Standard;
+  color: $White;
+
+  @include breakpoint-tablet {
+    @include FooterCopy-Desktop;
+    padding-bottom: $Desktop-Padding-Standard;
   }
 }
