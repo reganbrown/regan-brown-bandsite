@@ -198,3 +198,33 @@
     }
   }
 }
+
+.comments {
+  padding-left: $Mobile-Padding-Standard;
+  padding-right: $Mobile-Padding-Standard;
+
+  @include breakpoint-tablet {
+    padding-left: $Desktop-Padding-Standard;
+    padding-right: $Desktop-Padding-Standard;
+  }
+
+  @include breakpoint-desktop {
+    max-width: $max-width;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title {
+    @include SectionHeader-Mobile;
+    padding-top: $Mobile-Padding-Large;
+    padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-tablet {
+      @include SectionHeader-Desktop;
+      padding-top: $Desktop-Padding-Large;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
+  }
+}
