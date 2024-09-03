@@ -2,3 +2,51 @@
 @use "./partials/typography";
 @use "./partials/mixins" as *;
 @use "./partials/variables" as *;
+
+.hero {
+  &__image {
+    background-image: url("../assets/images/hero-shows.jpg");
+    height: 60vw;
+    background-position: center;
+    background-size: cover;
+    @include breakpoint-tablet {
+      height: 50vw;
+    }
+    @include breakpoint-desktop {
+      height: 40vw;
+    }
+    &--filter {
+      background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
+      height: 100%;
+    }
+  }
+
+  &__title-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: $Mobile-Padding-Standard;
+    padding-right: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+
+      @include breakpoint-desktop {
+        max-width: $max-width;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  &__title {
+    @include PageHeader-Mobile;
+    color: $White;
+    @include breakpoint-tablet {
+      @include PageHeader-Desktop;
+    }
+  }
+}
