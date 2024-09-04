@@ -228,40 +228,24 @@
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
-  &__form {
-    display: flex;
-    flex-direction: column;
-    border-bottom: solid 1px $Mercury;
-  }
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-
-    &-name {
-      padding-top: $Mobile-Padding-Standard;
-      font-weight: 600;
-    }
-    &-date {
-      padding-top: $Mobile-Padding-Standard;
-      color: grey;
-    }
-    &-comment {
-      padding-top: $Mobile-Padding-Standard;
-      padding-bottom: $Mobile-Padding-Standard;
-      border-bottom: solid 1px $Mercury;
-      width: 100%;
-    }
   }
-
   &__button {
     @include Subheader-Mobile;
+    width: 100%;
     min-height: 36px;
     margin-bottom: $Mobile-Padding-Standard;
     background-color: $BandSite-Black;
     color: white;
     border-radius: 4px;
     padding: 12px;
+
+    @include breakpoint-tablet {
+      min-height: 48px;
+      padding: 16px;
+    }
   }
 }
 
@@ -272,6 +256,22 @@ input {
   padding: 12px;
   margin-top: 4px;
   border: 1px solid $Mercury;
+
+  @include breakpoint-tablet {
+    min-height: 48px;
+    padding: 16px;
+  }
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 1px solid $BandSite-Black;
+}
+
+.submitted input:invalid,
+.submitted textarea:invalid {
+  border: 1px solid #d22d2d;
 }
 
 textarea {
@@ -283,4 +283,46 @@ textarea {
   margin-top: 4px;
   margin-bottom: $Mobile-Padding-Standard;
   border: 1px solid $Mercury;
+
+  @include breakpoint-tablet {
+    padding: 16px;
+  }
+}
+
+.comment-box {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__name {
+    padding-top: $Mobile-Padding-Standard;
+    font-weight: 600;
+  }
+  &__date {
+    padding-top: $Mobile-Padding-Standard;
+    color: grey;
+  }
+  &__comment {
+    padding-top: $Mobile-Padding-Standard;
+    padding-bottom: $Mobile-Padding-Standard;
+    border-bottom: solid 1px $Mercury;
+    width: 100%;
+  }
+}
+
+.photo-box {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: $Mobile-Padding-Standard;
+
+  &__image {
+    margin-top: $Mobile-Padding-Standard;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: $Mercury;
+    background-position: center;
+    background-size: cover;
+  }
 }
