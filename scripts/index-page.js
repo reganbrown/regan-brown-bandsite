@@ -71,10 +71,11 @@ function getCurrentDate() {
 // function to add new comment to array when form submitted
 function addNewComment(event) {
   event.preventDefault();
+  const form = event.target;
 
   // get values from form
-  const commentName = event.target.commenterName.value;
-  const commentText = event.target.commenterComment.value;
+  const commentName = form.commenterName.value;
+  const commentText = form.commenterComment.value;
 
   //create new object
   let newComment = {
