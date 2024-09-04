@@ -236,19 +236,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  &__list-name {
-    padding-top: $Mobile-Padding-Half;
-    font-weight: 700;
-  }
-  &__list-date {
-    padding-top: $Mobile-Padding-Half;
-    color: grey;
-  }
-  &__list-comment {
-    padding-bottom: $Mobile-Padding-Standard;
-    border-bottom: solid 2px lightgray;
-    width: 100%;
+
+    &-name {
+      padding-top: $Mobile-Padding-Half;
+      font-weight: 700;
+    }
+    &-date {
+      padding-top: $Mobile-Padding-Half;
+      color: grey;
+    }
+    &-comment {
+      padding-bottom: $Mobile-Padding-Standard;
+      border-bottom: solid 2px lightgray;
+      width: 100%;
+    }
   }
 
   &__button {

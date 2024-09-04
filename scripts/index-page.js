@@ -5,10 +5,10 @@ const commentsSection = document.querySelector(".comments__list");
 // default comment list
 const commentsTable = [
   {
-    name: "Victor Pinto",
+    name: "Isaac Tadesse",
     comment:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    date: "11/02/2023",
+      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
+    date: "10/20/2023",
   },
   {
     name: "Christina Cabre",
@@ -17,15 +17,15 @@ const commentsTable = [
     date: "10/28/2023",
   },
   {
-    name: "Isaac Tadesse",
+    name: "Victor Pinto",
     comment:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-    date: "10/20/2023",
+      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
+    date: "11/02/2023",
   },
 ];
 
-// function to print comment to page
-function renderComment(index) {
+// function to print a comment to page
+function printComment(index) {
   const commentName = commentsTable[index].name;
   const newCommentName = document.createElement("p");
   newCommentName.innerText = commentName;
@@ -45,10 +45,16 @@ function renderComment(index) {
   newCommentText.className = "comments__list-comment";
 }
 
-// loop to print default comments to the page
-for (i in commentsTable) {
-  renderComment(i);
+function renderComments() {
+  // clear comments and rerender
+  commentsSection.innerHTML = "";
+  for (let i = commentsTable.length - 1; i >= 0; i--) {
+    printComment(i);
+  }
 }
+
+// print default comments on page load
+renderComments();
 
 // get current date and format
 function getCurrentDate() {
@@ -62,36 +68,29 @@ function getCurrentDate() {
   return currentDate;
 }
 
-// function to render new comment to page when form submitted
-function renderNewComment(event) {
+// function to add new comment to array when form submitted
+function addNewComment(event) {
   event.preventDefault();
 
+  // get values from form
   const commentName = event.target.commenterName.value;
   const commentText = event.target.commenterComment.value;
 
+  //create new object
   let newComment = {
     name: commentName,
     comment: commentText,
     date: getCurrentDate(),
   };
 
+  // push new object to array
   commentsTable.push(newComment);
 
-  const newCommentText = document.createElement("p");
-  newCommentText.innerText = commentsTable[commentsTable.length - 1].comment;
-  commentsSection.prepend(newCommentText);
-  newCommentText.className = "comments__list-comment";
+  // clear and re-render comments to page
+  renderComments();
 
-  const newCommentDate = document.createElement("p");
-  newCommentDate.innerText = commentsTable[commentsTable.length - 1].date;
-  commentsSection.prepend(newCommentDate);
-  newCommentDate.className = "comments__list-date";
-
-  const newCommentName = document.createElement("p");
-  newCommentName.innerText = commentsTable[commentsTable.length - 1].name;
-  commentsSection.prepend(newCommentName);
-  newCommentName.className = "comments__list-name";
+  commentForm.reset();
 }
 
 // listen for form submission and call function
-commentForm.addEventListener("submit", renderNewComment);
+commentForm.addEventListener("submit", addNewComment);
