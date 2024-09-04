@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BandSite - Home</title>
     <link rel="stylesheet" href="./styles/bio.css" />
+    <script src="./scripts/index-page.js" defer></script>
   </head>
   <body>
     <header class="nav-bar">
@@ -135,6 +136,18 @@
       </section>
       <section class="comments">
         <h2 class="comments__title">Join the Conversation</h2>
+        <form class="comments__form">
+          <label class="comments__name-label">Name</label>
+          <input type="text" name="commenterName" class="comments__name" />
+          <label class="comments__comment-label">Comment</label>
+          <input
+            type="text"
+            name="commenterComment"
+            class="commenter__comment"
+          />
+          <button class="comments__button">Comment</button>
+        </form>
+        <section class="comments__list"></section>
       </section>
     </main>
     <footer class="site-footer">
