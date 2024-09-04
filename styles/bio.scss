@@ -231,6 +231,7 @@
   &__form {
     display: flex;
     flex-direction: column;
+    border-bottom: solid 1px $Mercury;
   }
   &__list {
     display: flex;
@@ -238,21 +239,47 @@
     justify-content: space-between;
 
     &-name {
-      padding-top: $Mobile-Padding-Half;
-      font-weight: 700;
+      padding-top: $Mobile-Padding-Standard;
+      font-weight: 600;
     }
     &-date {
-      padding-top: $Mobile-Padding-Half;
+      padding-top: $Mobile-Padding-Standard;
       color: grey;
     }
     &-comment {
+      padding-top: $Mobile-Padding-Standard;
       padding-bottom: $Mobile-Padding-Standard;
-      border-bottom: solid 2px lightgray;
+      border-bottom: solid 1px $Mercury;
       width: 100%;
     }
   }
 
   &__button {
+    @include Subheader-Mobile;
+    min-height: 36px;
     margin-bottom: $Mobile-Padding-Standard;
+    background-color: $BandSite-Black;
+    color: white;
+    border-radius: 4px;
+    padding: 12px;
   }
+}
+
+input {
+  min-height: 36px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 4px;
+  border: 1px solid $Mercury;
+}
+
+textarea {
+  min-height: 100px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 4px;
+  margin-bottom: $Mobile-Padding-Standard;
+  border: 1px solid $Mercury;
 }
