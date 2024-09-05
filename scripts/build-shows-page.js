@@ -36,31 +36,49 @@ const showsTable = [
 
 function printShow(index) {
   const showBox = document.createElement("div");
-  showBox.className = "shows__box";
+  showBox.classList.add("shows__box");
   showsSection.appendChild(showBox);
+
+  const newLabelDate = document.createElement("p");
+  newLabelDate.innerText = "Date";
+  newLabelDate.classList.add("shows__label");
+  showBox.appendChild(newLabelDate);
 
   const showDate = showsTable[index].date;
   const newShowDate = document.createElement("p");
   newShowDate.innerText = showDate;
-  newShowDate.className = "shows__date";
+  newShowDate.classList.add("shows__date");
   showBox.appendChild(newShowDate);
+
+  const newLabelVenue = document.createElement("p");
+  newLabelVenue.innerText = "Venue";
+  newLabelVenue.classList.add("shows__label");
+  showBox.appendChild(newLabelVenue);
 
   const showVenue = showsTable[index].venue;
   const newShowVenue = document.createElement("p");
   newShowVenue.innerText = showVenue;
-  newShowVenue.className = "shows__venue";
+  newShowVenue.classList.add("shows__venue");
   showBox.appendChild(newShowVenue);
+
+  const newLabelLocation = document.createElement("p");
+  newLabelLocation.innerText = "Location";
+  newLabelLocation.classList.add("shows__label");
+  showBox.appendChild(newLabelLocation);
 
   const showLocation = showsTable[index].location;
   const newShowLocation = document.createElement("p");
   newShowLocation.innerText = showLocation;
-  newShowLocation.className = "shows__location";
+  newShowLocation.classList.add("shows__location");
   showBox.appendChild(newShowLocation);
+
+  const newButton = document.createElement("button");
+  newButton.classList.add("shows__button");
+  newButton.innerText = "Buy Tickets";
+  showBox.appendChild(newButton);
 }
 
 function renderShows() {
-  // clear comments and rerender
-  showsSection.innerHTML = "";
   for (let i = showsTable.length - 1; i >= 0; i--) {
     printShow(i);
   }

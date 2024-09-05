@@ -95,28 +95,76 @@
     }
   }
 
-  &__headers {
-    width: 100%;
-    display: none;
-
-    @include breakpoint-desktop {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
   &__box {
     display: flex;
     flex-direction: column;
     padding-bottom: $Mobile-Padding-Standard;
+    padding-top: $Mobile-Padding-Standard;
+    border-bottom: solid 1px $Mercury;
 
     @include breakpoint-tablet {
+      padding-bottom: $Mobile-Padding-Large;
+      padding-top: $Mobile-Padding-Large;
       flex-direction: row;
       justify-content: space-evenly;
+      align-items: center;
     }
   }
 
   &__date {
     font-weight: 600;
+
+    @include breakpoint-tablet {
+      width: 25%;
+    }
+  }
+  &__venue {
+    @include breakpoint-tablet {
+      width: 25%;
+    }
+  }
+  &__location {
+    @include breakpoint-tablet {
+      width: 25%;
+    }
+  }
+  &__button {
+    @include LabelsButtons-Desktop;
+    width: 150px;
+    min-height: 2.25rem;
+    background-color: $BandSite-Black;
+    color: white;
+    border-radius: 4px;
+  }
+
+  &__label {
+    @include LabelsButtons-Mobile;
+    color: $Silver;
+
+    @include breakpoint-tablet {
+      display: none;
+    }
+  }
+
+  &__headers {
+    display: none;
+
+    @include breakpoint-tablet {
+      padding-top: $Mobile-Padding-Large;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  &__header {
+    @include LabelsButtons-Desktop;
+    color: $Silver;
+    width: 25%;
+  }
+
+  &__hidden {
+    width: 150px;
   }
 }

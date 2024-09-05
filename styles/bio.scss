@@ -267,7 +267,7 @@
     background-color: $BandSite-Black;
     color: white;
     border-radius: 4px;
-    margin-left: auto;
+    align-self: flex-end;
 
     @include breakpoint-tablet {
       max-width: 9.375rem;
@@ -385,6 +385,7 @@
 .form-right {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 80%;
 
   @include breakpoint-tablet {
