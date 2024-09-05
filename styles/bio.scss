@@ -233,36 +233,68 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    border-bottom: solid 1px $Mercury;
+
+    @include breakpoint-desktop {
+      max-width: $comments-width;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: $Mobile-Padding-Standard;
+
+    @include breakpoint-desktop {
+      max-width: $comments-width;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: $Desktop-Padding-Standard;
+    }
   }
+
   &__button {
-    @include Subheader-Mobile;
+    @include LabelsButtons-Desktop;
     width: 100%;
-    min-height: 36px;
+    min-height: 2.25rem;
     margin-bottom: $Mobile-Padding-Standard;
     background-color: $BandSite-Black;
     color: white;
     border-radius: 4px;
-    padding: 12px;
+    margin-left: auto;
 
     @include breakpoint-tablet {
-      min-height: 48px;
-      padding: 16px;
+      max-width: 9.375rem;
+      height: 2.5rem;
+    }
+
+    &:hover {
+      background-color: $BandSite-DarkBlack;
     }
   }
 }
 
-input {
+.comments__name-label,
+.comments__comment-label {
+  @include LabelsButtons-Mobile;
+  color: $Silver;
+}
+
+.comments__name {
   min-height: 36px;
   width: 100%;
   border-radius: 4px;
   padding: 12px;
   margin-top: 4px;
   border: 1px solid $Mercury;
+  background-color: $Alabaster;
+  margin-bottom: $Mobile-Padding-Standard;
 
   @include breakpoint-tablet {
     min-height: 48px;
@@ -270,18 +302,18 @@ input {
   }
 }
 
-input:focus,
-textarea:focus {
+.comments__name:focus,
+.commenter__comment:focus {
   outline: none;
   border: 1px solid $BandSite-Black;
 }
 
-.submitted input:invalid,
-.submitted textarea:invalid {
+.submitted .comments__name:invalid,
+.submitted .commenter__comment:invalid {
   border: 1px solid #d22d2d;
 }
 
-textarea {
+.commenter__comment {
   font-family: "AvenirNextLTPro";
   min-height: 100px;
   width: 100%;
@@ -290,6 +322,7 @@ textarea {
   margin-top: 4px;
   margin-bottom: $Mobile-Padding-Standard;
   border: 1px solid $Mercury;
+  background-color: $Alabaster;
 
   @include breakpoint-tablet {
     padding: 16px;
@@ -327,6 +360,7 @@ textarea {
   display: flex;
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
+  border-bottom: solid 1px $Mercury;
 
   @include breakpoint-tablet {
     width: 10%;
@@ -349,6 +383,8 @@ textarea {
 }
 
 .form-right {
+  display: flex;
+  flex-direction: column;
   width: 80%;
 
   @include breakpoint-tablet {
