@@ -228,6 +228,13 @@
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -290,10 +297,14 @@ textarea {
 }
 
 .comment-box {
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @include breakpoint-tablet {
+    width: 90%;
+  }
 
   &__name {
     padding-top: $Mobile-Padding-Standard;
@@ -312,9 +323,14 @@ textarea {
 }
 
 .photo-box {
+  width: 20%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-right: $Mobile-Padding-Standard;
+
+  @include breakpoint-tablet {
+    width: 10%;
+  }
 
   &__image {
     margin-top: $Mobile-Padding-Standard;
@@ -324,5 +340,45 @@ textarea {
     background-color: $Mercury;
     background-position: center;
     background-size: cover;
+
+    @include breakpoint-tablet {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+.form-right {
+  width: 80%;
+
+  @include breakpoint-tablet {
+    width: 90%;
+  }
+}
+
+.form-left {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  padding-right: $Mobile-Padding-Standard;
+
+  @include breakpoint-tablet {
+    width: 10%;
+  }
+
+  &__image {
+    margin-top: $Mobile-Padding-Standard;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: $Mercury;
+    background-image: url("../assets/images/Mohan-muruge.jpg");
+    background-position: center;
+    background-size: cover;
+
+    @include breakpoint-tablet {
+      width: 48px;
+      height: 48px;
+    }
   }
 }

@@ -118,5 +118,5 @@ commentForm.addEventListener("submit", addNewComment);
 
 // listen for form submission errors and style
 submitButton.addEventListener("click", function () {
-  commentForm.className = "submitted";
+  commentForm.classList.add("submitted");
 });
