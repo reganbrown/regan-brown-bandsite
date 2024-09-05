@@ -79,7 +79,7 @@ function printShow(index) {
 }
 
 function renderShows() {
-  for (let i = showsTable.length - 1; i >= 0; i--) {
+  for (let i = 0; i <= showsTable.length - 1; i++) {
     printShow(i);
   }
 }
