@@ -43,6 +43,8 @@ function printComment(index) {
   newCommentBox.className = "comment-box";
   commentsSection.appendChild(newCommentBox);
 
+  // check if newest comment and if so, add
+  // animation class to the containers
   if (index === commentsTable.length - 1) {
     newCommentBox.classList.add("slide-in");
     photoBox.classList.add("slide-in");
