@@ -32,8 +32,8 @@
 
       @include breakpoint-desktop {
         max-width: $max-width;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: $reset;
+        padding-right: $reset;
         margin-left: auto;
         margin-right: auto;
       }
@@ -60,8 +60,8 @@
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: $reset;
+    padding-right: $reset;
     margin-left: auto;
     margin-right: auto;
   }
@@ -74,24 +74,35 @@
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
       padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding-bottom: $reset;
     }
   }
   &__image {
     aspect-ratio: 16/9;
     width: 100%;
+
+    @include breakpoint-tablet {
+      padding: $Desktop-Padding-Standard;
+    }
+    @include breakpoint-desktop {
+      padding-left: $Desktop-Padding-Large;
+      padding-right: $Desktop-Padding-Large;
+    }
   }
   &__quote {
     padding-top: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-tablet {
-      padding: $Desktop-Padding-Standard;
+      padding-top: $reset;
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+      padding-bottom: $Desktop-Padding-Standard;
     }
 
     @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-XL;
-      padding-right: $Desktop-Padding-XL;
+      padding-left: $Desktop-Padding-Large;
+      padding-right: $Desktop-Padding-Large;
     }
 
     &-copy {
@@ -121,6 +132,11 @@
       padding-bottom: $Desktop-Padding-Standard;
       padding-left: $Desktop-Padding-Standard;
     }
+
+    @include breakpoint-desktop {
+      padding-left: $Desktop-Padding-Large;
+      padding-right: $Desktop-Padding-Large;
+    }
   }
 
   &__container {
@@ -128,6 +144,11 @@
       display: flex;
       padding-left: $Desktop-Padding-Standard;
       padding-right: $Desktop-Padding-Standard;
+    }
+
+    @include breakpoint-desktop {
+      padding-left: $Desktop-Padding-Large;
+      padding-right: $Desktop-Padding-Large;
     }
   }
 
@@ -154,8 +175,8 @@
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: $reset;
+    padding-right: $reset;
     margin-left: auto;
     margin-right: auto;
   }
@@ -211,8 +232,8 @@
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: $reset;
+    padding-right: $reset;
     margin-left: auto;
     margin-right: auto;
   }
@@ -235,10 +256,13 @@
     flex-wrap: wrap;
     border-bottom: solid 1px $Mercury;
 
+    @include breakpoint-tablet {
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+    }
+
     @include breakpoint-desktop {
       max-width: $comments-width;
-      padding-left: 0;
-      padding-right: 0;
       margin-left: auto;
       margin-right: auto;
     }
@@ -249,10 +273,13 @@
     flex-wrap: wrap;
     padding-bottom: $Mobile-Padding-Standard;
 
+    @include breakpoint-tablet {
+      padding-left: $Desktop-Padding-Standard;
+      padding-right: $Desktop-Padding-Standard;
+    }
+
     @include breakpoint-desktop {
       max-width: $comments-width;
-      padding-left: 0;
-      padding-right: 0;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: $Desktop-Padding-Standard;
@@ -300,6 +327,9 @@
     min-height: 48px;
     padding: 16px;
   }
+  &::placeholder {
+    color: $BandSite-Black;
+  }
 }
 
 .comments__name:focus,
@@ -327,6 +357,10 @@
 
   @include breakpoint-tablet {
     padding: 16px;
+  }
+
+  &::placeholder {
+    color: $BandSite-Black;
   }
 }
 

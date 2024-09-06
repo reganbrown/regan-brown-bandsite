@@ -14,14 +14,14 @@ html {
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: $reset;
+  padding: $reset;
 }
 
 // site font
 
 body {
-  font-family: "AvenirNextLTPro";
+  font-family: "AvenirNextLTPro", Verdana, Tahoma, sans-serif;
   word-spacing: 0.034em;
   width: 100vw;
 }
@@ -96,9 +96,11 @@ body {
     @include breakpoint-tablet {
       width: 10vw;
       padding-bottom: $Mobile-Padding-Large;
+      margin-right: $Mobile-Padding-Large;
     }
     @include breakpoint-desktop {
       padding-bottom: $Desktop-Padding-Large;
+      margin-right: $reset;
     }
   }
 
@@ -141,8 +143,8 @@ body {
     max-width: $max-width;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: $reset;
+    padding-right: $reset;
   }
 }
 

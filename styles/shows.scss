@@ -6,7 +6,7 @@
 .hero {
   &__image {
     background-image: url("../assets/images/hero-shows.jpg");
-    height: 60vw;
+    height: 370px;
     background-position: center;
     background-size: cover;
     @include breakpoint-tablet {
@@ -29,10 +29,13 @@
     padding-left: $Mobile-Padding-Standard;
     padding-right: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      padding-left: $Desktop-Padding-XL;
+      padding-right: $Desktop-Padding-XL;
 
       @include breakpoint-desktop {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
         max-width: $max-width;
         padding-left: 0;
         padding-right: 0;
@@ -45,9 +48,38 @@
   &__title {
     @include PageHeader-Mobile;
     color: $White;
+    padding-bottom: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
       @include PageHeader-Desktop;
+      width: 70%;
     }
+    @include breakpoint-desktop {
+      @include PageHeader-Desktop;
+      width: 50%;
+    }
+  }
+
+  &__subtitle {
+    @include Subheader-Mobile;
+    color: $White;
+    padding-bottom: $Mobile-Padding-Standard;
+    @include breakpoint-tablet {
+      @include Subheader-Desktop;
+    }
+    @include breakpoint-desktop {
+      @include Subheader-Desktop;
+      width: 100%;
+      align-self: flex-end;
+    }
+  }
+}
+
+.music-box {
+  @include breakpoint-tablet {
+    width: 70%;
+  }
+  @include breakpoint-desktop {
+    width: 45%;
   }
 }
 
@@ -120,17 +152,20 @@
 
   &__date {
     font-weight: 600;
+    padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-tablet {
       width: 25%;
     }
   }
   &__venue {
+    padding-bottom: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
       width: 25%;
     }
   }
   &__location {
+    padding-bottom: $Mobile-Padding-Standard;
     @include breakpoint-tablet {
       width: 25%;
     }
@@ -154,8 +189,10 @@
   }
 
   &__label {
-    @include LabelsButtons-Mobile;
+    @include LabelsButtons-Desktop;
+    font-weight: 400;
     color: $Silver;
+    padding-bottom: $Mobile-Padding-Half;
 
     @include breakpoint-tablet {
       display: none;
