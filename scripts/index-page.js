@@ -43,6 +43,11 @@ function printComment(index) {
   newCommentBox.className = "comment-box";
   commentsSection.appendChild(newCommentBox);
 
+  if (index === commentsTable.length - 1) {
+    newCommentBox.classList.add("slide-in");
+    photoBox.classList.add("slide-in");
+  }
+
   const commentName = commentsTable[index].name;
   const newCommentName = document.createElement("p");
   newCommentName.innerText = commentName;
