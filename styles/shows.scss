@@ -23,25 +23,20 @@
 
   &__title-box {
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    @include flex(column);
     justify-content: center;
-    padding-left: $Mobile-Padding-Standard;
-    padding-right: $Mobile-Padding-Standard;
+    @include padding-sides($Mobile-Padding-Standard);
     @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-XL;
-      padding-right: $Desktop-Padding-XL;
-
-      @include breakpoint-desktop {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: $max-width;
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      @include padding-sides($Desktop-Padding-XL);
+    }
+    @include breakpoint-desktop {
+      @include flex(row);
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: $max-width;
+      @include padding-sides($reset);
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -84,18 +79,15 @@
 }
 
 .shows {
-  padding-left: $Mobile-Padding-Standard;
-  padding-right: $Mobile-Padding-Standard;
+  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include padding-sides($Desktop-Padding-Standard);
   }
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: 0;
-    padding-right: 0;
+    @include padding-sides($reset);
     margin-left: auto;
     margin-right: auto;
   }
@@ -113,14 +105,12 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
+    @include flex(column);
     padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-desktop {
       max-width: $comments-width;
-      padding-left: 0;
-      padding-right: 0;
+      @include padding-sides($reset);
       margin-left: auto;
       margin-right: auto;
       padding-bottom: $Desktop-Padding-Standard;
@@ -128,16 +118,15 @@
   }
 
   &__box {
-    display: flex;
-    flex-direction: column;
+    @include divider;
+    @include flex(column);
     padding-bottom: $Mobile-Padding-Standard;
     padding-top: $Mobile-Padding-Standard;
-    border-bottom: solid 1px $Mercury;
 
     @include breakpoint-tablet {
       padding-bottom: $Mobile-Padding-Large;
       padding-top: $Mobile-Padding-Large;
-      flex-direction: row;
+      @include flex(row);
       justify-content: space-evenly;
       align-items: center;
     }
@@ -204,8 +193,7 @@
 
     @include breakpoint-tablet {
       padding-top: $Mobile-Padding-Large;
-      display: flex;
-      flex-direction: row;
+      @include flex(row);
       justify-content: space-evenly;
       align-items: center;
     }

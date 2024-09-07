@@ -3,7 +3,17 @@ const commentForm = document.querySelector(".comments__form");
 const commentsSection = document.querySelector(".comments__list");
 const submitButton = document.querySelector(".comments__button");
 
-// default comment list
+// comment constructor
+class commentObject {
+  constructor(name, comment, date, pfp) {
+    this.name = name;
+    this.comment = comment;
+    this.date = date;
+    this.pfp = pfp;
+  }
+}
+
+// comment list with default comments pre-populated
 const commentsTable = [
   {
     name: "Isaac Tadesse",
@@ -69,16 +79,13 @@ function printComment(index) {
   newCommentBox.appendChild(newCommentText);
 }
 
+// clear comments and rerender
 function renderComments() {
-  // clear comments and rerender
   commentsSection.innerHTML = "";
   for (let i = commentsTable.length - 1; i >= 0; i--) {
     printComment(i);
   }
 }
-
-// print default comments on page load
-renderComments();
 
 // get current date and format
 function getCurrentDate() {
@@ -97,17 +104,13 @@ function addNewComment(event) {
   event.preventDefault();
   const form = event.target;
 
-  // get values from form
-  const commentName = form.commenterName.value;
-  const commentText = form.commenterComment.value;
-
   //create new object
-  let newComment = {
-    name: commentName,
-    comment: commentText,
-    date: getCurrentDate(),
-    pfp: "url('./assets/images/Mohan-muruge.jpg')",
-  };
+  let newComment = new commentObject(
+    form.commenterName.value,
+    form.commenterComment.value,
+    getCurrentDate(),
+    "url('./assets/images/Mohan-muruge.jpg')"
+  );
 
   // push new object to array
   commentsTable.push(newComment);
@@ -119,6 +122,9 @@ function addNewComment(event) {
   commentForm.reset();
   commentForm.classList.remove("submitted");
 }
+
+// print default comments on page load
+renderComments();
 
 // listen for form submission and call function
 commentForm.addEventListener("submit", addNewComment);

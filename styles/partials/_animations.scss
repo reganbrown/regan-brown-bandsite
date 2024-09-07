@@ -1,0 +1,35 @@
+// animation for newest comment to create
+// smoother addition of new comments
+.slide-in {
+  animation: slideIn 0.5s;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+// error animation
+// shakes required fields if left empty
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

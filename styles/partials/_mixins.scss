@@ -2,7 +2,7 @@
 @use "./typography";
 
 @mixin divider {
-  border: 0.0625rem solid $Mercury;
+  border-bottom: 0.0625rem solid $Mercury;
 }
 
 @mixin PageHeader-Desktop {
@@ -87,4 +87,14 @@
   @media (min-width: $desktop-screen) {
     @content;
   }
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin padding-sides($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
 }

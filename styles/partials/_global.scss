@@ -61,7 +61,7 @@ body {
         padding: $Mobile-Padding-Large;
 
         @include breakpoint-desktop {
-          padding: $Desktop-Padding-Large 0;
+          padding: $Desktop-Padding-Large $reset;
         }
       }
     }
@@ -126,31 +126,28 @@ body {
 
 .footer {
   width: 100vw;
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
   align-items: flex-start;
   background-color: $BandSite-Black;
   padding-left: $Mobile-Padding-Standard;
 
   @include breakpoint-tablet {
-    flex-direction: row;
+    @include flex(row);
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include padding-sides($Desktop-Padding-Standard);
   }
   @include breakpoint-desktop {
     max-width: $max-width;
     margin-left: auto;
     margin-right: auto;
-    padding-left: $reset;
-    padding-right: $reset;
+    @include padding-sides($reset);
   }
 }
 
 .socials {
   @include breakpoint-tablet {
-    display: flex;
+    @include flex(row);
     align-items: center;
     width: 60%;
   }
@@ -183,8 +180,7 @@ body {
 
 .contact {
   @include breakpoint-tablet {
-    display: flex;
-    flex-direction: row;
+    @include flex(row);
     justify-content: space-between;
     width: 70%;
     order: 1;

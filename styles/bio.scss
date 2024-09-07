@@ -1,5 +1,6 @@
 @use "./partials/global";
 @use "./partials/typography";
+@use "./partials/animations";
 @use "./partials/mixins" as *;
 @use "./partials/variables" as *;
 
@@ -22,21 +23,18 @@
   }
 
   &__title-box {
+    @include flex(row);
     height: 100%;
-    display: flex;
     align-items: center;
-    padding-left: $Mobile-Padding-Standard;
+    @include padding-sides($Mobile-Padding-Standard);
     @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
-
-      @include breakpoint-desktop {
-        max-width: $max-width;
-        padding-left: $reset;
-        padding-right: $reset;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      @include padding-sides($Desktop-Padding-Standard);
+    }
+    @include breakpoint-desktop {
+      max-width: $max-width;
+      padding: $reset;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -50,18 +48,15 @@
 }
 
 .about {
-  padding-left: $Mobile-Padding-Standard;
-  padding-right: $Mobile-Padding-Standard;
+  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include padding-sides($Desktop-Padding-Standard);
   }
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: $reset;
-    padding-right: $reset;
+    @include padding-sides($reset);
     margin-left: auto;
     margin-right: auto;
   }
@@ -85,8 +80,7 @@
       padding: $Desktop-Padding-Standard;
     }
     @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-Large;
-      padding-right: $Desktop-Padding-Large;
+      @include padding-sides($Desktop-Padding-Large);
     }
   }
   &__quote {
@@ -95,14 +89,12 @@
 
     @include breakpoint-tablet {
       padding-top: $reset;
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      @include padding-sides($Desktop-Padding-Standard);
       padding-bottom: $Desktop-Padding-Standard;
     }
 
     @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-Large;
-      padding-right: $Desktop-Padding-Large;
+      @include padding-sides($Desktop-Padding-Large);
     }
 
     &-copy {
@@ -141,14 +133,12 @@
 
   &__container {
     @include breakpoint-tablet {
-      display: flex;
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      @include flex(row);
+      @include padding-sides($Desktop-Padding-Standard);
     }
 
     @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-Large;
-      padding-right: $Desktop-Padding-Large;
+      @include padding-sides($Desktop-Padding-Large);
     }
   }
 
@@ -165,18 +155,15 @@
 }
 
 .gallery {
-  padding-left: $Mobile-Padding-Standard;
-  padding-right: $Mobile-Padding-Standard;
+  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include padding-sides($Desktop-Padding-Standard);
   }
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: $reset;
-    padding-right: $reset;
+    @include padding-sides($reset);
     margin-left: auto;
     margin-right: auto;
   }
@@ -199,7 +186,7 @@
 
   &__images {
     width: 100%;
-    display: flex;
+    @include flex(row);
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -211,8 +198,7 @@
     filter: grayscale(0.9);
     @include breakpoint-tablet {
       width: 32%;
-      padding-left: $Mobile-Padding-Half;
-      padding-right: $Mobile-Padding-Half;
+      @include padding-sides($Mobile-Padding-Half);
       padding-bottom: $Mobile-Padding-Standard;
     }
     &:hover {
@@ -222,18 +208,15 @@
 }
 
 .comments {
-  padding-left: $Mobile-Padding-Standard;
-  padding-right: $Mobile-Padding-Standard;
+  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
-    padding-left: $Desktop-Padding-Standard;
-    padding-right: $Desktop-Padding-Standard;
+    @include padding-sides($Desktop-Padding-Standard);
   }
 
   @include breakpoint-desktop {
     max-width: $max-width;
-    padding-left: $reset;
-    padding-right: $reset;
+    @include padding-sides($reset);
     margin-left: auto;
     margin-right: auto;
   }
@@ -251,14 +234,13 @@
   }
 
   &__form {
+    @include divider;
     width: 100%;
-    display: flex;
+    @include flex(row);
     flex-wrap: wrap;
-    border-bottom: solid 1px $Mercury;
 
     @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      @include padding-sides($Desktop-Padding-Standard);
     }
 
     @include breakpoint-desktop {
@@ -269,13 +251,12 @@
   }
 
   &__list {
-    display: flex;
+    @include flex(row);
     flex-wrap: wrap;
     padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-tablet {
-      padding-left: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      @include padding-sides($Desktop-Padding-Standard);
     }
 
     @include breakpoint-desktop {
@@ -366,7 +347,7 @@
 
 .comment-box {
   width: 80%;
-  display: flex;
+  @include flex(row);
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -383,19 +364,19 @@
     color: grey;
   }
   &__comment {
+    @include divider;
     padding-top: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
-    border-bottom: solid 1px $Mercury;
     width: 100%;
   }
 }
 
 .photo-box {
+  @include divider;
   width: 20%;
-  display: flex;
+  @include flex(row);
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
-  border-bottom: solid 1px $Mercury;
 
   @include breakpoint-tablet {
     width: 10%;
@@ -403,23 +384,22 @@
 
   &__image {
     margin-top: $Mobile-Padding-Standard;
-    width: 36px;
-    height: 36px;
+    width: $img-small;
+    height: $img-small;
     border-radius: 50%;
     background-color: $Mercury;
     background-position: center;
     background-size: cover;
 
     @include breakpoint-tablet {
-      width: 48px;
-      height: 48px;
+      width: $img-med;
+      height: $img-med;
     }
   }
 }
 
 .form-right {
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
   align-items: flex-start;
   width: 80%;
 
@@ -430,7 +410,7 @@
 
 .form-left {
   width: 20%;
-  display: flex;
+  @include flex(row);
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
 
@@ -452,41 +432,5 @@
       width: 48px;
       height: 48px;
     }
-  }
-}
-
-// animation for newest comment to create
-// smoother addition of new comments
-.slide-in {
-  animation: slideIn 0.5s;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-// error animation
-// shakes required fields if left empty
-
-@keyframes tilt-shaking {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(1deg);
-  }
-  50% {
-    transform: rotate(-1deg);
-  }
-  75% {
-    transform: rotate(1deg);
-  }
-  100% {
-    transform: rotate(0deg);
   }
 }
