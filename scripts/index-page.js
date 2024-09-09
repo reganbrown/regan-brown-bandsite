@@ -2,101 +2,93 @@
 const commentForm = document.querySelector(".comments__form");
 const commentsSection = document.querySelector(".comments__list");
 const submitButton = document.querySelector(".comments__button");
+const Key = "cdf543a0-7c51-4a5d-9d37-c7bed647696a";
 
 // comment constructor
 class commentObject {
-  constructor(name, comment, date, pfp) {
+  constructor(name, comment) {
     this.name = name;
     this.comment = comment;
-    this.date = date;
-    this.pfp = pfp;
   }
 }
 
-// comment list with default comments pre-populated
-const commentsTable = [
-  {
-    name: "Isaac Tadesse",
-    comment:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-    date: "10/20/2023",
-    pfp: "none",
-  },
-  {
-    name: "Christina Cabre",
-    comment:
-      "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-    date: "10/28/2023",
-    pfp: "none",
-  },
-  {
-    name: "Victor Pinto",
-    comment:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    date: "11/02/2023",
-    pfp: "none",
-  },
-];
+class bandSiteAPI {
+  constructor(apiKey) {
+    this.apiKey = apiKey;
+    this.baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
+  }
+  getComments = async () => {
+    const commentsTable = (
+      await axios.get(`${this.baseURL}comments?api_key=${this.apiKey}`)
+    ).data;
+    return commentsTable;
+  };
+  postComments = async (newComment) => {
+    await axios.post(
+      `${this.baseURL}comments?api_key=${this.apiKey}`,
+      newComment
+    );
+
+    displayComments();
+  };
+}
+
+let bandSite = new bandSiteAPI(Key);
+
+// function to clear and display comments from API by newest date
+async function displayComments() {
+  commentsSection.innerHTML = "";
+  try {
+    const commentTable = await bandSite.getComments();
+    commentTable.sort((a, b) => {
+      if (a.timestamp < b.timestamp) return 1;
+      if (a.timestamp > b.timestamp) return -1;
+      return 0;
+    });
+
+    commentTable.forEach((comment) => {
+      printComment(comment);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// run display comments on page load
+displayComments();
 
 // function to print a comment to page
-function printComment(index) {
+function printComment(comment) {
   const photoBox = document.createElement("div");
   photoBox.className = "photo-box";
   commentsSection.appendChild(photoBox);
 
   const newPhoto = document.createElement("div");
   newPhoto.className = "photo-box__image";
-  newPhoto.style.backgroundImage = commentsTable[index].pfp;
+  newPhoto.style.backgroundImage = "none";
   photoBox.appendChild(newPhoto);
 
   const newCommentBox = document.createElement("div");
   newCommentBox.className = "comment-box";
   commentsSection.appendChild(newCommentBox);
 
-  // check if newest comment and if so, add
-  // animation class to the containers
-  if (index === commentsTable.length - 1) {
-    newCommentBox.classList.add("slide-in");
-    photoBox.classList.add("slide-in");
-  }
-
-  const commentName = commentsTable[index].name;
+  const commentName = comment.name;
   const newCommentName = document.createElement("p");
   newCommentName.innerText = commentName;
   newCommentName.className = "comment-box__name";
   newCommentBox.appendChild(newCommentName);
 
-  const commentDate = commentsTable[index].date;
+  const commentDate = convertDate(comment.timestamp);
   const newCommentDate = document.createElement("p");
   newCommentDate.innerText = commentDate;
   newCommentDate.className = "comment-box__date";
   newCommentBox.appendChild(newCommentDate);
 
-  const commentText = commentsTable[index].comment;
+  const commentText = comment.comment;
   const newCommentText = document.createElement("p");
   newCommentText.innerText = commentText;
   newCommentText.className = "comment-box__comment";
   newCommentBox.appendChild(newCommentText);
-}
-
-// clear comments and rerender
-function renderComments() {
-  commentsSection.innerHTML = "";
-  for (let i = commentsTable.length - 1; i >= 0; i--) {
-    printComment(i);
-  }
-}
-
-// get current date and format
-function getCurrentDate() {
-  const date = new Date();
-
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  let currentDate = `${month}/${day}/${year}`;
-  return currentDate;
 }
 
 // function to add new comment to array when form submitted
@@ -107,24 +99,16 @@ function addNewComment(event) {
   //create new object
   let newComment = new commentObject(
     form.commenterName.value,
-    form.commenterComment.value,
-    getCurrentDate(),
-    "url('./assets/images/Mohan-muruge.jpg')"
+    form.commenterComment.value
   );
 
-  // push new object to array
-  commentsTable.push(newComment);
-
-  // clear and re-render comments to page
-  renderComments();
+  // push new object to API
+  bandSite.postComments(newComment);
 
   // clear form and reset errors
   commentForm.reset();
   commentForm.classList.remove("submitted");
 }
-
-// print default comments on page load
-renderComments();
 
 // listen for form submission and call function
 commentForm.addEventListener("submit", addNewComment);
@@ -133,3 +117,15 @@ commentForm.addEventListener("submit", addNewComment);
 submitButton.addEventListener("click", function () {
   commentForm.classList.add("submitted");
 });
+
+// convert ms timestamp to printable date
+function convertDate(ms) {
+  const date = new Date(ms);
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  let currentDate = `${month}/${day}/${year}`;
+  return currentDate;
+}
