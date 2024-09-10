@@ -348,6 +348,7 @@
 .comment-box {
   width: 80%;
   @include flex(row);
+  @include divider;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -358,16 +359,24 @@
   &__name {
     padding-top: $Mobile-Padding-Standard;
     font-weight: 600;
+    width: 50%;
   }
   &__date {
     padding-top: $Mobile-Padding-Standard;
     color: grey;
   }
   &__comment {
-    @include divider;
     padding-top: $Mobile-Padding-Standard;
     padding-bottom: $Mobile-Padding-Standard;
-    width: 100%;
+    width: 80%;
+  }
+  &__delete {
+    margin-top: $Mobile-Padding-Half;
+    height: 30px;
+    width: 20%;
+    border-radius: 15px;
+    background-color: $BandSite-Black;
+    color: white;
   }
 }
 

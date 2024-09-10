@@ -1,4 +1,3 @@
-// connect to the DOM to take input and output
 const commentForm = document.querySelector(".comments__form");
 const commentsSection = document.querySelector(".comments__list");
 const submitButton = document.querySelector(".comments__button");
@@ -10,8 +9,6 @@ class commentObject {
     this.comment = comment;
   }
 }
-
-console.log(bandSite);
 
 // function to clear and display comments from API by newest date
 async function displayComments() {
@@ -28,12 +25,12 @@ async function displayComments() {
     commentTable.forEach((comment) => {
       printComment(comment);
     });
+    addListeners();
   } catch (error) {
     console.error(error);
   }
 }
 
-// run display comments on page load
 displayComments();
 
 // function to print a comment to page
@@ -68,14 +65,18 @@ function printComment(comment) {
   newCommentText.innerText = commentText;
   newCommentText.className = "comment-box__comment";
   newCommentBox.appendChild(newCommentText);
+
+  const newCommentID = document.createElement("button");
+  newCommentID.innerText = "Delete";
+  newCommentID.setAttribute("value", comment.id);
+  newCommentID.className = "comment-box__delete";
+  newCommentBox.appendChild(newCommentID);
 }
 
-// function to add new comment to array when form submitted
 function addNewComment(event) {
   event.preventDefault();
   const form = event.target;
 
-  //create new object
   let newComment = new commentObject(
     form.commenterName.value,
     form.commenterComment.value
@@ -84,15 +85,23 @@ function addNewComment(event) {
   // push new object to API
   bandSite.postComments(newComment);
 
-  // clear form and reset errors
   commentForm.reset();
   commentForm.classList.remove("submitted");
 }
 
-// listen for form submission and call function
 commentForm.addEventListener("submit", addNewComment);
 
 // listen for form submission errors and style
 submitButton.addEventListener("click", function () {
   commentForm.classList.add("submitted");
 });
+
+function addListeners() {
+  const deleteBox = document.querySelectorAll(".comment-box__delete");
+
+  deleteBox.forEach((del) => {
+    del.addEventListener("click", function () {
+      bandSite.deleteComments(this.value.toString());
+    });
+  });
+}

@@ -122,6 +122,7 @@
     @include flex(column);
     padding-bottom: $Mobile-Padding-Standard;
     padding-top: $Mobile-Padding-Standard;
+    cursor: pointer;
 
     @include breakpoint-tablet {
       padding-bottom: $Mobile-Padding-Large;
@@ -134,7 +135,7 @@
     &:hover {
       background-color: $Alabaster;
     }
-    &:active {
+    &--selected {
       background-color: $Mercury;
     }
   }

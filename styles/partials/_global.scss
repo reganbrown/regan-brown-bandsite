@@ -117,6 +117,9 @@ body {
       border-bottom: 3px $White solid;
       font-weight: bold;
     }
+    &--current {
+      border-bottom: 3px $White solid;
+    }
   }
 }
 

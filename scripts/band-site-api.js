@@ -19,6 +19,10 @@ class bandSiteAPI {
 
     displayComments();
   };
+  deleteComments = async (ID) => {
+    await axios.delete(`${this.baseURL}comments/${ID}?api_key=${this.apiKey}`);
+    displayComments();
+  };
   getShows = async () => {
     const showsTable = await axios.get(
       `${this.baseURL}showdates?api_key=${this.apiKey}`
@@ -29,7 +33,7 @@ class bandSiteAPI {
 
 let bandSite = new bandSiteAPI(key);
 
-// convert ms timestamp to printable date
+// convert ms since epoch timestamp to printable date
 function convertDate(ms) {
   const date = new Date(ms);
 

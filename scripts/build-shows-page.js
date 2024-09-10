@@ -7,6 +7,7 @@ async function displayShows() {
 
     showsTable.forEach((show) => {
       printShow(show);
+      addListeners();
     });
   } catch (error) {
     console.error(error);
@@ -57,4 +58,16 @@ function printShow(show) {
   newButton.classList.add("shows__button");
   newButton.innerText = "Buy Tickets";
   showBox.appendChild(newButton);
+}
+
+function addListeners() {
+  const showtimeBox = document.querySelectorAll(".shows__box");
+  showtimeBox.forEach((show) => {
+    show.addEventListener("click", () => {
+      showtimeBox.forEach((show) => {
+        show.classList.remove("shows__box--selected");
+      });
+      show.classList.add("shows__box--selected");
+    });
+  });
 }
