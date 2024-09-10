@@ -2,7 +2,6 @@
 const commentForm = document.querySelector(".comments__form");
 const commentsSection = document.querySelector(".comments__list");
 const submitButton = document.querySelector(".comments__button");
-const Key = "cdf543a0-7c51-4a5d-9d37-c7bed647696a";
 
 // comment constructor
 class commentObject {
@@ -12,34 +11,14 @@ class commentObject {
   }
 }
 
-class bandSiteAPI {
-  constructor(apiKey) {
-    this.apiKey = apiKey;
-    this.baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
-  }
-  getComments = async () => {
-    const commentsTable = (
-      await axios.get(`${this.baseURL}comments?api_key=${this.apiKey}`)
-    ).data;
-    return commentsTable;
-  };
-  postComments = async (newComment) => {
-    await axios.post(
-      `${this.baseURL}comments?api_key=${this.apiKey}`,
-      newComment
-    );
-
-    displayComments();
-  };
-}
-
-let bandSite = new bandSiteAPI(Key);
+console.log(bandSite);
 
 // function to clear and display comments from API by newest date
 async function displayComments() {
   commentsSection.innerHTML = "";
   try {
-    const commentTable = await bandSite.getComments();
+    let commentTable = await bandSite.getComments();
+    commentTable = commentTable.data;
     commentTable.sort((a, b) => {
       if (a.timestamp < b.timestamp) return 1;
       if (a.timestamp > b.timestamp) return -1;
@@ -117,15 +96,3 @@ commentForm.addEventListener("submit", addNewComment);
 submitButton.addEventListener("click", function () {
   commentForm.classList.add("submitted");
 });
-
-// convert ms timestamp to printable date
-function convertDate(ms) {
-  const date = new Date(ms);
-
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  let currentDate = `${month}/${day}/${year}`;
-  return currentDate;
-}

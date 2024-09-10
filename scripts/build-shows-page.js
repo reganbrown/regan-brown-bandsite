@@ -1,40 +1,22 @@
 const showsSection = document.querySelector(".shows__list");
 
-// default comment list
-const showsTable = [
-  {
-    date: "Mon Sept 09 2024",
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Tue Sept 17 2024",
-    venue: "Pier 3 East",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Oct 12 2024",
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Nov 1 2024",
-    venue: "Hyatt Agency",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Nov 29 2024",
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Wed Dec 18 2024",
-    venue: "Press Club",
-    location: "San Francisco, CA",
-  },
-];
+async function displayShows() {
+  try {
+    let showsTable = await bandSite.getShows();
+    showsTable = showsTable.data;
 
-function printShow(index) {
+    showsTable.forEach((show) => {
+      console.log(show);
+      printShow(show);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+displayShows();
+
+function printShow(show) {
   const showBox = document.createElement("div");
   showBox.classList.add("shows__box");
   showsSection.appendChild(showBox);
@@ -44,7 +26,7 @@ function printShow(index) {
   newLabelDate.classList.add("shows__label");
   showBox.appendChild(newLabelDate);
 
-  const showDate = showsTable[index].date;
+  const showDate = convertDate(show.date);
   const newShowDate = document.createElement("p");
   newShowDate.innerText = showDate;
   newShowDate.classList.add("shows__date");
@@ -55,7 +37,7 @@ function printShow(index) {
   newLabelVenue.classList.add("shows__label");
   showBox.appendChild(newLabelVenue);
 
-  const showVenue = showsTable[index].venue;
+  const showVenue = show.place;
   const newShowVenue = document.createElement("p");
   newShowVenue.innerText = showVenue;
   newShowVenue.classList.add("shows__venue");
@@ -66,7 +48,7 @@ function printShow(index) {
   newLabelLocation.classList.add("shows__label");
   showBox.appendChild(newLabelLocation);
 
-  const showLocation = showsTable[index].location;
+  const showLocation = show.location;
   const newShowLocation = document.createElement("p");
   newShowLocation.innerText = showLocation;
   newShowLocation.classList.add("shows__location");
@@ -77,11 +59,3 @@ function printShow(index) {
   newButton.innerText = "Buy Tickets";
   showBox.appendChild(newButton);
 }
-
-function renderShows() {
-  for (let i = 0; i <= showsTable.length - 1; i++) {
-    printShow(i);
-  }
-}
-
-renderShows();
