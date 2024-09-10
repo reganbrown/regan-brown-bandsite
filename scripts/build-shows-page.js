@@ -2,11 +2,10 @@ const showsSection = document.querySelector(".shows__list");
 
 async function displayShows() {
   try {
-    let showsTable = await bandSite.getShows();
-    showsTable = showsTable.data;
+    const response = await bandSite.getShows();
+    const showsTable = response.data;
 
     showsTable.forEach((show) => {
-      console.log(show);
       printShow(show);
     });
   } catch (error) {

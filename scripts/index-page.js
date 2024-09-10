@@ -17,8 +17,8 @@ console.log(bandSite);
 async function displayComments() {
   commentsSection.innerHTML = "";
   try {
-    let commentTable = await bandSite.getComments();
-    commentTable = commentTable.data;
+    const response = await bandSite.getComments();
+    const commentTable = response.data;
     commentTable.sort((a, b) => {
       if (a.timestamp < b.timestamp) return 1;
       if (a.timestamp > b.timestamp) return -1;

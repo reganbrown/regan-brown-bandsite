@@ -28,7 +28,6 @@ class bandSiteAPI {
 }
 
 let bandSite = new bandSiteAPI(key);
-console.log(bandSite);
 
 // convert ms timestamp to printable date
 function convertDate(ms) {
