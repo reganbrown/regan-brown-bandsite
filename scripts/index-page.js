@@ -25,7 +25,8 @@ async function displayComments() {
     commentTable.forEach((comment) => {
       printComment(comment);
     });
-    addListeners();
+    addLikeListeners();
+    addDeleteListeners();
   } catch (error) {
     console.error(error);
   }
@@ -66,6 +67,18 @@ function printComment(comment) {
   newCommentText.className = "comment-box__comment";
   newCommentBox.appendChild(newCommentText);
 
+  const commentLikes = comment.likes;
+  const newCommentLikes = document.createElement("p");
+  newCommentLikes.innerText = `Number of Likes: ${commentLikes}`;
+  newCommentLikes.className = "comment-box__likes-counter";
+  newCommentBox.appendChild(newCommentLikes);
+
+  const newLikeButton = document.createElement("button");
+  newLikeButton.innerText = "Like";
+  newLikeButton.setAttribute("value", comment.id);
+  newLikeButton.className = "comment-box__like";
+  newCommentBox.appendChild(newLikeButton);
+
   const newCommentID = document.createElement("button");
   newCommentID.innerText = "Delete";
   newCommentID.setAttribute("value", comment.id);
@@ -83,7 +96,7 @@ function addNewComment(event) {
   );
 
   // push new object to API
-  bandSite.postComments(newComment);
+  bandSite.postComment(newComment);
 
   commentForm.reset();
   commentForm.classList.remove("submitted");
@@ -96,12 +109,22 @@ submitButton.addEventListener("click", function () {
   commentForm.classList.add("submitted");
 });
 
-function addListeners() {
+function addDeleteListeners() {
   const deleteBox = document.querySelectorAll(".comment-box__delete");
 
   deleteBox.forEach((del) => {
     del.addEventListener("click", function () {
-      bandSite.deleteComments(this.value.toString());
+      bandSite.deleteComment(this.value.toString());
+    });
+  });
+}
+
+function addLikeListeners() {
+  const likeButton = document.querySelectorAll(".comment-box__like");
+
+  likeButton.forEach((like) => {
+    like.addEventListener("click", function () {
+      bandSite.likeComment(this.value.toString());
     });
   });
 }

@@ -11,7 +11,7 @@ class bandSiteAPI {
     );
     return commentsTable;
   };
-  postComments = async (newComment) => {
+  postComment = async (newComment) => {
     await axios.post(
       `${this.baseURL}comments?api_key=${this.apiKey}`,
       newComment
@@ -19,8 +19,14 @@ class bandSiteAPI {
 
     displayComments();
   };
-  deleteComments = async (ID) => {
+  deleteComment = async (ID) => {
     await axios.delete(`${this.baseURL}comments/${ID}?api_key=${this.apiKey}`);
+    displayComments();
+  };
+  likeComment = async (ID) => {
+    await axios.put(
+      `${this.baseURL}comments/${ID}/like?api_key=${this.apiKey}`
+    );
     displayComments();
   };
   getShows = async () => {
