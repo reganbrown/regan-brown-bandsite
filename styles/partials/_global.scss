@@ -44,18 +44,18 @@ body {
       justify-content: flex-start;
       align-items: flex-end;
     }
+
     @include breakpoint-desktop {
       max-width: $max-width;
-      margin-left: auto;
-      margin-right: auto;
+      margin: $reset auto;
     }
 
     &--left {
-      padding-top: $Mobile-Padding-Standard;
-      padding-bottom: $Mobile-Padding-Standard;
+      padding: $Mobile-Padding-Standard $reset;
       display: flex;
       align-items: flex-end;
-      height: 50%;
+      height: $half;
+
       @include breakpoint-tablet {
         height: auto;
         padding: $Mobile-Padding-Large;
@@ -69,8 +69,9 @@ body {
     &--right {
       display: flex;
       justify-content: center;
-      height: 50%;
+      height: $half;
       width: 95%;
+
       @include breakpoint-tablet {
         height: auto;
         width: auto;
@@ -93,21 +94,18 @@ body {
     width: 40vw;
     text-align: center;
     padding-bottom: $Mobile-Padding-Standard;
+    border-bottom: 3px $BandSite-Black solid;
+
     @include breakpoint-tablet {
       width: 10vw;
       padding-bottom: $Mobile-Padding-Large;
       margin-right: $Mobile-Padding-Large;
     }
+
     @include breakpoint-desktop {
       padding-bottom: $Desktop-Padding-Large;
       margin-right: $reset;
     }
-  }
-
-  &__link {
-    text-decoration: none;
-    color: $White;
-    border-bottom: 3px $BandSite-Black solid;
 
     &:hover {
       border-bottom: 3px $White solid;
@@ -117,9 +115,15 @@ body {
       border-bottom: 3px $White solid;
       font-weight: bold;
     }
+
     &--current {
       border-bottom: 3px $White solid;
     }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $White;
   }
 }
 
@@ -128,8 +132,8 @@ body {
 }
 
 .footer {
-  width: 100vw;
   @include flex(column);
+  width: 100vw;
   align-items: flex-start;
   background-color: $BandSite-Black;
   padding-left: $Mobile-Padding-Standard;
@@ -142,8 +146,7 @@ body {
   }
   @include breakpoint-desktop {
     max-width: $max-width;
-    margin-left: auto;
-    margin-right: auto;
+    margin: $reset auto;
     @include padding-sides($reset);
   }
 }
@@ -158,25 +161,22 @@ body {
   &__title {
     @include SectionHeader-Mobile;
     color: $White;
-    padding-right: $Mobile-Padding-Standard;
-    padding-top: $Mobile-Padding-Large;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Large $Mobile-Padding-Standard
+      $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
-      padding-right: $Desktop-Padding-Standard;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $Desktop-Padding-Large $Desktop-Padding-Standard
+        $Desktop-Padding-Standard $reset;
     }
   }
+
   &__icon {
-    padding-right: $Mobile-Padding-Standard;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $reset $Mobile-Padding-Standard $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
-      padding-right: $Mobile-Padding-Large;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $Desktop-Padding-Large $Mobile-Padding-Large
+        $Desktop-Padding-Standard $reset;
     }
   }
 }
@@ -198,7 +198,6 @@ body {
 
     @include breakpoint-tablet {
       color: $White;
-      padding-bottom: $Desktop-Padding-Standard;
       padding-right: $Desktop-Padding-Standard;
     }
   }
@@ -207,14 +206,17 @@ body {
     @include FooterCopy-Mobile;
     font-weight: 600;
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
       @include FooterCopy-Desktop;
       font-weight: 600;
     }
   }
+
   &__address {
     @include FooterCopy-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
       @include FooterCopy-Desktop;
     }
@@ -225,6 +227,7 @@ body {
       @include FooterCopy-Mobile;
       color: $White;
       text-decoration: none;
+
       @include breakpoint-tablet {
         @include FooterCopy-Desktop;
       }
@@ -240,6 +243,7 @@ body {
     width: 40%;
     padding-top: $Desktop-Padding-XL;
   }
+
   @include breakpoint-desktop {
   }
   &__logo {
@@ -250,10 +254,8 @@ body {
 
 .legal {
   @include FooterCopy-Mobile;
-  padding-top: $Mobile-Padding-Standard;
-  padding-bottom: $Mobile-Padding-Standard;
+  padding: $Mobile-Padding-Standard $reset;
   color: $White;
-  width: 80%;
 
   @include breakpoint-tablet {
     @include FooterCopy-Desktop;

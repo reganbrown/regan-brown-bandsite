@@ -6,37 +6,41 @@
 .hero {
   &__image {
     background-image: url("../assets/images/hero-shows.jpg");
-    height: 370px;
+    height: 23.125rem;
     background-position: center;
     background-size: cover;
+
     @include breakpoint-tablet {
       height: 50vw;
     }
+
     @include breakpoint-desktop {
       height: 40vw;
     }
+
     &--filter {
       background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
-      height: 100%;
+      height: $full;
     }
   }
 
   &__title-box {
-    height: 100%;
     @include flex(column);
-    justify-content: center;
     @include padding-sides($Mobile-Padding-Standard);
+    height: $full;
+    justify-content: center;
+
     @include breakpoint-tablet {
       @include padding-sides($Desktop-Padding-XL);
     }
+
     @include breakpoint-desktop {
       @include flex(row);
+      @include padding-sides($reset);
       flex-wrap: wrap;
       justify-content: space-between;
       max-width: $max-width;
-      @include padding-sides($reset);
-      margin-left: auto;
-      margin-right: auto;
+      margin: $reset auto;
     }
   }
 
@@ -44,13 +48,15 @@
     @include PageHeader-Mobile;
     color: $White;
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
       @include PageHeader-Desktop;
       width: 70%;
     }
+
     @include breakpoint-desktop {
       @include PageHeader-Desktop;
-      width: 50%;
+      width: $half;
     }
   }
 
@@ -58,12 +64,14 @@
     @include Subheader-Mobile;
     color: $White;
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
       @include Subheader-Desktop;
     }
+
     @include breakpoint-desktop {
       @include Subheader-Desktop;
-      width: 100%;
+      width: $full;
       align-self: flex-end;
     }
   }
@@ -73,6 +81,7 @@
   @include breakpoint-tablet {
     width: 70%;
   }
+
   @include breakpoint-desktop {
     width: 45%;
   }
@@ -86,21 +95,18 @@
   }
 
   @include breakpoint-desktop {
-    max-width: $max-width;
     @include padding-sides($reset);
-    margin-left: auto;
-    margin-right: auto;
+    max-width: $max-width;
+    margin: $reset auto;
   }
 
   &__title {
     @include SectionHeader-Mobile;
-    padding-top: $Mobile-Padding-Large;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
     }
   }
 
@@ -109,10 +115,9 @@
     padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-desktop {
-      max-width: $comments-width;
       @include padding-sides($reset);
-      margin-left: auto;
-      margin-right: auto;
+      max-width: $comments-width;
+      margin: $reset auto;
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
@@ -120,14 +125,12 @@
   &__box {
     @include divider;
     @include flex(column);
-    padding-bottom: $Mobile-Padding-Standard;
-    padding-top: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Standard $reset;
     cursor: pointer;
 
     @include breakpoint-tablet {
-      padding-bottom: $Mobile-Padding-Large;
-      padding-top: $Mobile-Padding-Large;
       @include flex(row);
+      padding: $Mobile-Padding-Large $reset;
       justify-content: space-evenly;
       align-items: center;
     }
@@ -135,6 +138,7 @@
     &:hover {
       background-color: $Alabaster;
     }
+
     &--selected {
       background-color: $Mercury;
     }
@@ -145,21 +149,26 @@
     padding-bottom: $Mobile-Padding-Standard;
 
     @include breakpoint-tablet {
-      width: 25%;
+      width: $quarter;
     }
   }
+
   &__venue {
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
-      width: 25%;
+      width: $quarter;
     }
   }
+
   &__location {
     padding-bottom: $Mobile-Padding-Standard;
+
     @include breakpoint-tablet {
-      width: 25%;
+      width: $quarter;
     }
   }
+
   &__button {
     @include LabelsButtons-Desktop;
     margin-top: $Mobile-Padding-Standard;
@@ -169,8 +178,8 @@
     border-radius: 4px;
 
     @include breakpoint-tablet {
-      margin-top: 0;
-      width: 150px;
+      margin-top: $reset;
+      width: 9.375rem;
     }
 
     &:hover {
@@ -193,8 +202,8 @@
     display: none;
 
     @include breakpoint-tablet {
-      padding-top: $Mobile-Padding-Large;
       @include flex(row);
+      padding-top: $Mobile-Padding-Large;
       justify-content: space-evenly;
       align-items: center;
     }
@@ -202,10 +211,10 @@
 
   &__header {
     color: $Silver;
-    width: 25%;
+    width: $quarter;
   }
 
   &__hidden {
-    width: 150px;
+    width: 9.375rem;
   }
 }

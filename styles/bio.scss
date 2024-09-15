@@ -10,37 +10,42 @@
     height: 60vw;
     background-position: center;
     background-size: cover;
+
     @include breakpoint-tablet {
       height: 50vw;
     }
+
     @include breakpoint-desktop {
       height: 40vw;
     }
+
     &--filter {
       background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
-      height: 100%;
+      height: $full;
     }
   }
 
   &__title-box {
     @include flex(row);
-    height: 100%;
-    align-items: center;
     @include padding-sides($Mobile-Padding-Standard);
+    height: $full;
+    align-items: center;
+
     @include breakpoint-tablet {
       @include padding-sides($Desktop-Padding-Standard);
     }
+
     @include breakpoint-desktop {
       max-width: $max-width;
       padding: $reset;
-      margin-left: auto;
-      margin-right: auto;
+      margin: $reset auto;
     }
   }
 
   &__title {
     @include PageHeader-Mobile;
     color: $White;
+
     @include breakpoint-tablet {
       @include PageHeader-Desktop;
     }
@@ -55,26 +60,24 @@
   }
 
   @include breakpoint-desktop {
-    max-width: $max-width;
     @include padding-sides($reset);
-    margin-left: auto;
-    margin-right: auto;
+    max-width: $max-width;
+    margin: $reset auto;
   }
 
   &__title {
     @include SectionHeader-Mobile;
-    padding-top: $Mobile-Padding-Large;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $reset;
+      padding: $Desktop-Padding-Large $reset $reset $reset;
     }
   }
+
   &__image {
     aspect-ratio: 16/9;
-    width: 100%;
+    width: $full;
 
     @include breakpoint-tablet {
       padding: $Desktop-Padding-Standard;
@@ -83,14 +86,13 @@
       @include padding-sides($Desktop-Padding-Large);
     }
   }
+
   &__quote {
-    padding-top: $Mobile-Padding-Standard;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
-      padding-top: $reset;
-      @include padding-sides($Desktop-Padding-Standard);
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard
+        $Desktop-Padding-Standard;
     }
 
     @include breakpoint-desktop {
@@ -121,13 +123,11 @@
 
     @include breakpoint-tablet {
       @include Subheader-Desktop;
-      padding-bottom: $Desktop-Padding-Standard;
-      padding-left: $Desktop-Padding-Standard;
+      padding: $reset $reset $Desktop-Padding-Standard $Desktop-Padding-Standard;
     }
 
     @include breakpoint-desktop {
-      padding-left: $Desktop-Padding-Large;
-      padding-right: $Desktop-Padding-Large;
+      @include padding-sides($Desktop-Padding-Large);
     }
   }
 
@@ -148,8 +148,7 @@
 
     @include breakpoint-tablet {
       @include BodyCopy-Desktop;
-      padding-bottom: $Desktop-Padding-Standard;
-      padding-right: $Desktop-Padding-Standard;
+      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard $reset;
     }
   }
 }
@@ -162,10 +161,9 @@
   }
 
   @include breakpoint-desktop {
-    max-width: $max-width;
     @include padding-sides($reset);
-    margin-left: auto;
-    margin-right: auto;
+    max-width: $max-width;
+    margin: $reset auto;
   }
 
   &__background {
@@ -175,32 +173,30 @@
   &__title {
     @include SectionHeader-Mobile;
     font-weight: 600;
-    padding-top: $Mobile-Padding-Large;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
+
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
     }
   }
 
   &__images {
-    width: 100%;
     @include flex(row);
     flex-wrap: wrap;
     justify-content: center;
   }
 
   &__image {
-    width: 100%;
-    height: auto;
+    width: $full;
     padding-bottom: $Mobile-Padding-Standard;
     filter: grayscale(0.9);
+
     @include breakpoint-tablet {
       width: 32%;
       @include padding-sides($Mobile-Padding-Half);
-      padding-bottom: $Mobile-Padding-Standard;
     }
+
     &:hover {
       filter: none;
     }
@@ -215,27 +211,24 @@
   }
 
   @include breakpoint-desktop {
-    max-width: $max-width;
     @include padding-sides($reset);
-    margin-left: auto;
-    margin-right: auto;
+    max-width: $max-width;
+    margin: $reset auto;
   }
 
   &__title {
     @include SectionHeader-Mobile;
-    padding-top: $Mobile-Padding-Large;
-    padding-bottom: $Mobile-Padding-Standard;
+    padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
 
     @include breakpoint-tablet {
       @include SectionHeader-Desktop;
-      padding-top: $Desktop-Padding-Large;
-      padding-bottom: $Desktop-Padding-Standard;
+      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
     }
   }
 
   &__form {
     @include divider;
-    width: 100%;
+    width: $full;
     @include flex(row);
     flex-wrap: wrap;
 
@@ -245,8 +238,7 @@
 
     @include breakpoint-desktop {
       max-width: $comments-width;
-      margin-left: auto;
-      margin-right: auto;
+      margin: $reset auto;
     }
   }
 
@@ -261,19 +253,18 @@
 
     @include breakpoint-desktop {
       max-width: $comments-width;
-      margin-left: auto;
-      margin-right: auto;
+      margin: $reset auto;
       padding-bottom: $Desktop-Padding-Standard;
     }
   }
 
   &__button {
     @include LabelsButtons-Desktop;
-    width: 100%;
+    width: $full;
     min-height: 2.25rem;
     margin-bottom: $Mobile-Padding-Standard;
     background-color: $BandSite-Black;
-    color: white;
+    color: $White;
     border-radius: 4px;
     align-self: flex-end;
     cursor: pointer;
@@ -296,18 +287,18 @@
 }
 
 .comments__name {
-  min-height: 36px;
-  width: 100%;
+  min-height: 2.25rem;
+  width: $full;
   border-radius: 4px;
-  padding: 12px;
+  padding: 0.75rem;
   margin-top: 4px;
   border: 1px solid $Mercury;
   background-color: $Alabaster;
   margin-bottom: $Mobile-Padding-Standard;
 
   @include breakpoint-tablet {
-    min-height: 48px;
-    padding: 16px;
+    min-height: 3rem;
+    padding: $Mobile-Padding-Standard;
   }
   &::placeholder {
     color: $BandSite-Black;
@@ -328,12 +319,11 @@
 
 .commenter__comment {
   font-family: "AvenirNextLTPro";
-  min-height: 100px;
-  width: 100%;
+  min-height: 6.25rem;
+  width: $full;
   border-radius: 4px;
-  padding: 12px;
-  margin-top: 4px;
-  margin-bottom: $Mobile-Padding-Standard;
+  padding: 0.75rem;
+  margin: 0.25rem 0 $Mobile-Padding-Standard 0;
   border: 1px solid $Mercury;
   background-color: $Alabaster;
 
@@ -347,9 +337,9 @@
 }
 
 .comment-box {
-  width: 80%;
   @include flex(row);
   @include divider;
+  width: 80%;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -360,25 +350,28 @@
   &__name {
     padding-top: $Mobile-Padding-Standard;
     font-weight: 600;
-    width: 50%;
+    width: $half;
   }
+
   &__date {
     padding-top: $Mobile-Padding-Standard;
     color: grey;
   }
+
   &__comment {
-    padding-top: $Mobile-Padding-Standard;
-    padding-bottom: $Mobile-Padding-Standard;
-    width: 100%;
+    padding: $Mobile-Padding-Standard $reset;
+    width: $full;
   }
+
   &__likes-counter {
-    width: 100%;
+    width: $full;
     padding-bottom: $Mobile-Padding-Standard;
   }
+
   &__like {
     margin-bottom: $Mobile-Padding-Standard;
-    height: 30px;
-    width: 150px;
+    height: 1.875rem;
+    width: 9.375rem;
     border-radius: 4px;
     background-color: $BandSite-Black;
     color: white;
@@ -388,15 +381,16 @@
       background-color: $BandSite-DarkBlack;
     }
   }
+
   &__delete {
     @extend .comment-box__like;
   }
 }
 
 .photo-box {
+  @include flex(row);
   @include divider;
   width: 20%;
-  @include flex(row);
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
 
@@ -408,7 +402,7 @@
     margin-top: $Mobile-Padding-Standard;
     width: $img-small;
     height: $img-small;
-    border-radius: 50%;
+    border-radius: $half;
     background-color: $Mercury;
     background-position: center;
     background-size: cover;
@@ -431,8 +425,8 @@
 }
 
 .form-left {
-  width: 20%;
   @include flex(row);
+  width: 20%;
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
 
@@ -442,17 +436,17 @@
 
   &__image {
     margin-top: $Mobile-Padding-Standard;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: $img-small;
+    height: $img-small;
+    border-radius: $half;
     background-color: $Mercury;
     background-image: url("../assets/images/Mohan-muruge.jpg");
     background-position: center;
     background-size: cover;
 
     @include breakpoint-tablet {
-      width: 48px;
-      height: 48px;
+      width: $img-med;
+      height: $img-med;
     }
   }
 }
