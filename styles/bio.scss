@@ -11,14 +11,6 @@
     background-position: center;
     background-size: cover;
 
-    @include breakpoint-tablet {
-      height: 50vw;
-    }
-
-    @include breakpoint-desktop {
-      height: 40vw;
-    }
-
     &--filter {
       background-color: rgba($color: $BandSite-Black, $alpha: 0.5);
       height: $full;
@@ -30,24 +22,36 @@
     @include padding-sides($Mobile-Padding-Standard);
     height: $full;
     align-items: center;
-
-    @include breakpoint-tablet {
-      @include padding-sides($Desktop-Padding-Standard);
-    }
-
-    @include breakpoint-desktop {
-      max-width: $max-width;
-      padding: $reset;
-      margin: $reset auto;
-    }
   }
 
   &__title {
     @include PageHeader-Mobile;
     color: $White;
+  }
 
-    @include breakpoint-tablet {
+  @include breakpoint-tablet {
+    &__image {
+      height: 50vw;
+    }
+
+    &__title-box {
+      @include padding-sides($Desktop-Padding-Standard);
+    }
+
+    &__title {
       @include PageHeader-Desktop;
+    }
+  }
+
+  @include breakpoint-desktop {
+    &__image {
+      height: 40vw;
+    }
+
+    &__title-box {
+      max-width: $max-width;
+      padding: $reset;
+      margin: $reset auto;
     }
   }
 }
@@ -55,116 +59,104 @@
 .about {
   @include padding-sides($Mobile-Padding-Standard);
 
-  @include breakpoint-tablet {
-    @include padding-sides($Desktop-Padding-Standard);
-  }
-
-  @include breakpoint-desktop {
-    @include padding-sides($reset);
-    max-width: $max-width;
-    margin: $reset auto;
-  }
-
   &__title {
     @include SectionHeader-Mobile;
     padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
-
-    @include breakpoint-tablet {
-      @include SectionHeader-Desktop;
-      padding: $Desktop-Padding-Large $reset $reset $reset;
-    }
   }
 
   &__image {
     aspect-ratio: 16/9;
     width: $full;
-
-    @include breakpoint-tablet {
-      padding: $Desktop-Padding-Standard;
-    }
-    @include breakpoint-desktop {
-      @include padding-sides($Desktop-Padding-Large);
-    }
   }
 
   &__quote {
     padding: $Mobile-Padding-Standard $reset;
 
-    @include breakpoint-tablet {
-      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard
-        $Desktop-Padding-Standard;
-    }
-
-    @include breakpoint-desktop {
-      @include padding-sides($Desktop-Padding-Large);
-    }
-
     &-copy {
       @include Subheader-Mobile;
-
-      @include breakpoint-tablet {
-        @include Subheader-Desktop;
-      }
     }
 
     &-footer {
       @include Subheader-Mobile;
       padding-top: $Mobile-Padding-Half;
-
-      @include breakpoint-tablet {
-        @include Subheader-Desktop;
-      }
     }
   }
 
   &__subtitle {
     @include Subheader-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      @include Subheader-Desktop;
-      padding: $reset $reset $Desktop-Padding-Standard $Desktop-Padding-Standard;
-    }
-
-    @include breakpoint-desktop {
-      @include padding-sides($Desktop-Padding-Large);
-    }
-  }
-
-  &__container {
-    @include breakpoint-tablet {
-      @include flex(row);
-      @include padding-sides($Desktop-Padding-Standard);
-    }
-
-    @include breakpoint-desktop {
-      @include padding-sides($Desktop-Padding-Large);
-    }
   }
 
   &__copy {
     @include BodyCopy-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      @include BodyCopy-Desktop;
-      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard $reset;
-    }
   }
-}
-
-.gallery {
-  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
     @include padding-sides($Desktop-Padding-Standard);
+
+    &__title {
+      @include SectionHeader-Desktop;
+      padding: $Desktop-Padding-Large $reset $reset $reset;
+    }
+
+    &__image {
+      padding: $Desktop-Padding-Standard;
+    }
+
+    &__quote {
+      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard
+        $Desktop-Padding-Standard;
+
+      &-copy {
+        @include Subheader-Desktop;
+      }
+      &-footer {
+        @include Subheader-Desktop;
+      }
+    }
+
+    &__subtitle {
+      @include Subheader-Desktop;
+      padding: $reset $reset $Desktop-Padding-Standard $Desktop-Padding-Standard;
+    }
+
+    &__container {
+      @include flex(row);
+      @include padding-sides($Desktop-Padding-Standard);
+    }
+
+    &__copy {
+      @include BodyCopy-Desktop;
+      padding: $reset $Desktop-Padding-Standard $Desktop-Padding-Standard $reset;
+    }
   }
 
   @include breakpoint-desktop {
     @include padding-sides($reset);
     max-width: $max-width;
     margin: $reset auto;
+
+    &__image {
+      @include padding-sides($Desktop-Padding-Large);
+    }
+
+    &__quote {
+      @include padding-sides($Desktop-Padding-Large);
+    }
+
+    &__subtitle {
+      @include padding-sides($Desktop-Padding-Large);
+    }
+
+    &__container {
+      @include padding-sides($Desktop-Padding-Large);
+    }
   }
+}
+
+.gallery {
+  @include padding-sides($Mobile-Padding-Standard);
 
   &__background {
     background-color: $Alabaster;
@@ -174,11 +166,6 @@
     @include SectionHeader-Mobile;
     font-weight: 600;
     padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
-
-    @include breakpoint-tablet {
-      @include SectionHeader-Desktop;
-      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
-    }
   }
 
   &__images {
@@ -192,22 +179,23 @@
     padding-bottom: $Mobile-Padding-Standard;
     filter: grayscale(0.9);
 
-    @include breakpoint-tablet {
-      width: 32%;
-      @include padding-sides($Mobile-Padding-Half);
-    }
-
     &:hover {
       filter: none;
     }
   }
-}
-
-.comments {
-  @include padding-sides($Mobile-Padding-Standard);
 
   @include breakpoint-tablet {
     @include padding-sides($Desktop-Padding-Standard);
+
+    &__title {
+      @include SectionHeader-Desktop;
+      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
+    }
+
+    &__image {
+      width: 32%;
+      @include padding-sides($Mobile-Padding-Half);
+    }
   }
 
   @include breakpoint-desktop {
@@ -215,15 +203,14 @@
     max-width: $max-width;
     margin: $reset auto;
   }
+}
+
+.comments {
+  @include padding-sides($Mobile-Padding-Standard);
 
   &__title {
     @include SectionHeader-Mobile;
     padding: $Mobile-Padding-Large $reset $Mobile-Padding-Standard $reset;
-
-    @include breakpoint-tablet {
-      @include SectionHeader-Desktop;
-      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
-    }
   }
 
   &__form {
@@ -231,31 +218,12 @@
     width: $full;
     @include flex(row);
     flex-wrap: wrap;
-
-    @include breakpoint-tablet {
-      @include padding-sides($Desktop-Padding-Standard);
-    }
-
-    @include breakpoint-desktop {
-      max-width: $comments-width;
-      margin: $reset auto;
-    }
   }
 
   &__list {
     @include flex(row);
     flex-wrap: wrap;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      @include padding-sides($Desktop-Padding-Standard);
-    }
-
-    @include breakpoint-desktop {
-      max-width: $comments-width;
-      margin: $reset auto;
-      padding-bottom: $Desktop-Padding-Standard;
-    }
   }
 
   &__button {
@@ -269,13 +237,47 @@
     align-self: flex-end;
     cursor: pointer;
 
-    @include breakpoint-tablet {
+    &:hover {
+      background-color: $BandSite-DarkBlack;
+    }
+  }
+
+  @include breakpoint-tablet {
+    @include padding-sides($Desktop-Padding-Standard);
+
+    &__title {
+      @include SectionHeader-Desktop;
+      padding: $Desktop-Padding-Large $reset $Desktop-Padding-Standard $reset;
+    }
+
+    &__form {
+      @include padding-sides($Desktop-Padding-Standard);
+    }
+
+    &__list {
+      @include padding-sides($Desktop-Padding-Standard);
+    }
+
+    &__button {
       max-width: 9.375rem;
       height: 2.5rem;
     }
+  }
 
-    &:hover {
-      background-color: $BandSite-DarkBlack;
+  @include breakpoint-desktop {
+    @include padding-sides($reset);
+    max-width: $max-width;
+    margin: $reset auto;
+
+    &__form {
+      max-width: $comments-width;
+      margin: $reset auto;
+    }
+
+    &__list {
+      max-width: $comments-width;
+      margin: $reset auto;
+      padding-bottom: $Desktop-Padding-Standard;
     }
   }
 }
@@ -296,12 +298,13 @@
   background-color: $Alabaster;
   margin-bottom: $Mobile-Padding-Standard;
 
+  &::placeholder {
+    color: $BandSite-Black;
+  }
+
   @include breakpoint-tablet {
     min-height: 3rem;
     padding: $Mobile-Padding-Standard;
-  }
-  &::placeholder {
-    color: $BandSite-Black;
   }
 }
 
@@ -327,12 +330,12 @@
   border: 1px solid $Mercury;
   background-color: $Alabaster;
 
-  @include breakpoint-tablet {
-    padding: 16px;
-  }
-
   &::placeholder {
     color: $BandSite-Black;
+  }
+
+  @include breakpoint-tablet {
+    padding: 16px;
   }
 }
 
@@ -342,10 +345,6 @@
   width: 80%;
   flex-wrap: wrap;
   justify-content: space-between;
-
-  @include breakpoint-tablet {
-    width: 90%;
-  }
 
   &__name {
     padding-top: $Mobile-Padding-Standard;
@@ -385,6 +384,10 @@
   &__delete {
     @extend .comment-box__like;
   }
+
+  @include breakpoint-tablet {
+    width: 90%;
+  }
 }
 
 .photo-box {
@@ -394,10 +397,6 @@
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
 
-  @include breakpoint-tablet {
-    width: 10%;
-  }
-
   &__image {
     margin-top: $Mobile-Padding-Standard;
     width: $img-small;
@@ -406,8 +405,12 @@
     background-color: $Mercury;
     background-position: center;
     background-size: cover;
+  }
 
-    @include breakpoint-tablet {
+  @include breakpoint-tablet {
+    width: 10%;
+
+    &__image {
       width: $img-med;
       height: $img-med;
     }
@@ -430,10 +433,6 @@
   justify-content: center;
   padding-right: $Mobile-Padding-Standard;
 
-  @include breakpoint-tablet {
-    width: 10%;
-  }
-
   &__image {
     margin-top: $Mobile-Padding-Standard;
     width: $img-small;
@@ -443,8 +442,12 @@
     background-image: url("../assets/images/Mohan-muruge.jpg");
     background-position: center;
     background-size: cover;
+  }
 
-    @include breakpoint-tablet {
+  @include breakpoint-tablet {
+    width: 10%;
+
+    &__image {
       width: $img-med;
       height: $img-med;
     }

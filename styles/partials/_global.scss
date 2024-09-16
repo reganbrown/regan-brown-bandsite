@@ -39,31 +39,11 @@ body {
     align-items: center;
     background-color: $BandSite-Black;
 
-    @include breakpoint-tablet {
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-end;
-    }
-
-    @include breakpoint-desktop {
-      max-width: $max-width;
-      margin: $reset auto;
-    }
-
     &--left {
       padding: $Mobile-Padding-Standard $reset;
       display: flex;
       align-items: flex-end;
       height: $half;
-
-      @include breakpoint-tablet {
-        height: auto;
-        padding: $Mobile-Padding-Large;
-
-        @include breakpoint-desktop {
-          padding: $Desktop-Padding-Large $reset;
-        }
-      }
     }
 
     &--right {
@@ -71,12 +51,6 @@ body {
       justify-content: center;
       height: $half;
       width: 95%;
-
-      @include breakpoint-tablet {
-        height: auto;
-        width: auto;
-        padding-left: $Mobile-Padding-Large;
-      }
     }
   }
 
@@ -96,17 +70,6 @@ body {
     padding-bottom: $Mobile-Padding-Standard;
     border-bottom: 3px $BandSite-Black solid;
 
-    @include breakpoint-tablet {
-      width: 10vw;
-      padding-bottom: $Mobile-Padding-Large;
-      margin-right: $Mobile-Padding-Large;
-    }
-
-    @include breakpoint-desktop {
-      padding-bottom: $Desktop-Padding-Large;
-      margin-right: $reset;
-    }
-
     &:hover {
       border-bottom: 3px $White solid;
     }
@@ -124,6 +87,46 @@ body {
   &__link {
     text-decoration: none;
     color: $White;
+  }
+
+  @include breakpoint-tablet {
+    &__body {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-end;
+
+      &--left {
+        height: auto;
+        padding: $Mobile-Padding-Large;
+      }
+
+      &--right {
+        height: auto;
+        width: auto;
+        padding-left: $Mobile-Padding-Large;
+      }
+    }
+
+    &__item {
+      width: 10vw;
+      padding-bottom: $Mobile-Padding-Large;
+      margin-right: $Mobile-Padding-Large;
+    }
+  }
+
+  @include breakpoint-desktop {
+    &__body {
+      max-width: $max-width;
+      margin: $reset auto;
+
+      &--left {
+        padding: $Desktop-Padding-Large $reset;
+      }
+    }
+    &__item {
+      padding-bottom: $Desktop-Padding-Large;
+      margin-right: $reset;
+    }
   }
 }
 
@@ -144,6 +147,7 @@ body {
     justify-content: flex-start;
     @include padding-sides($Desktop-Padding-Standard);
   }
+
   @include breakpoint-desktop {
     max-width: $max-width;
     margin: $reset auto;
@@ -152,29 +156,29 @@ body {
 }
 
 .socials {
-  @include breakpoint-tablet {
-    @include flex(row);
-    align-items: center;
-    width: 60%;
-  }
-
   &__title {
     @include SectionHeader-Mobile;
     color: $White;
     padding: $Mobile-Padding-Large $Mobile-Padding-Standard
       $Mobile-Padding-Standard $reset;
-
-    @include breakpoint-tablet {
-      @include SectionHeader-Desktop;
-      padding: $Desktop-Padding-Large $Desktop-Padding-Standard
-        $Desktop-Padding-Standard $reset;
-    }
   }
 
   &__icon {
     padding: $reset $Mobile-Padding-Standard $Mobile-Padding-Standard $reset;
+  }
 
-    @include breakpoint-tablet {
+  @include breakpoint-tablet {
+    @include flex(row);
+    align-items: center;
+    width: 60%;
+
+    &__title {
+      @include SectionHeader-Desktop;
+      padding: $Desktop-Padding-Large $Desktop-Padding-Standard
+        $Desktop-Padding-Standard $reset;
+    }
+
+    &__icon {
       padding: $Desktop-Padding-Large $Mobile-Padding-Large
         $Desktop-Padding-Standard $reset;
     }
@@ -182,44 +186,20 @@ body {
 }
 
 .contact {
-  @include breakpoint-tablet {
-    @include flex(row);
-    justify-content: space-between;
-    width: 70%;
-    order: 1;
-
-    @include breakpoint-desktop {
-      width: 70%;
-    }
-  }
   &__card {
     color: $White;
     padding-bottom: $Mobile-Padding-Large;
-
-    @include breakpoint-tablet {
-      color: $White;
-      padding-right: $Desktop-Padding-Standard;
-    }
   }
 
   &__name {
     @include FooterCopy-Mobile;
     font-weight: 600;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      @include FooterCopy-Desktop;
-      font-weight: 600;
-    }
   }
 
   &__address {
     @include FooterCopy-Mobile;
     padding-bottom: $Mobile-Padding-Standard;
-
-    @include breakpoint-tablet {
-      @include FooterCopy-Desktop;
-    }
   }
 
   &__email {
@@ -227,15 +207,47 @@ body {
       @include FooterCopy-Mobile;
       color: $White;
       text-decoration: none;
+    }
+  }
 
-      @include breakpoint-tablet {
+  @include breakpoint-tablet {
+    @include flex(row);
+    justify-content: space-between;
+    width: 70%;
+    order: 1;
+
+    &__card {
+      color: $White;
+      padding-right: $Desktop-Padding-Standard;
+    }
+
+    &__name {
+      @include FooterCopy-Desktop;
+      font-weight: 600;
+    }
+
+    &__address {
+      @include FooterCopy-Desktop;
+    }
+
+    &__email {
+      &--link {
         @include FooterCopy-Desktop;
       }
     }
   }
+
+  @include breakpoint-desktop {
+    width: 70%;
+  }
 }
 
 .branding {
+  &__logo {
+    max-width: 7.5rem;
+    max-height: 1.25rem;
+  }
+
   @include breakpoint-tablet {
     display: flex;
     justify-content: flex-end;
@@ -243,19 +255,13 @@ body {
     width: 40%;
     padding-top: $Desktop-Padding-XL;
   }
-
-  @include breakpoint-desktop {
-  }
-  &__logo {
-    max-width: 7.5rem;
-    max-height: 1.25rem;
-  }
 }
 
 .legal {
   @include FooterCopy-Mobile;
   padding: $Mobile-Padding-Standard $reset;
   color: $White;
+  width: $full;
 
   @include breakpoint-tablet {
     @include FooterCopy-Desktop;
